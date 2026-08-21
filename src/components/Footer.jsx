@@ -93,10 +93,7 @@ export default function Footer({ setActivePage, onShowToast }) {
               href={`mailto:${companyInfo.email}`}
               className="flex items-center gap-3 hover:text-white transition-colors"
             >
-              <span className="material-symbols-outlined text-primary-fixed text-[20px] shrink-0">
-                mail
-              </span>
-              <span>{companyInfo.email}</span>
+
             </a>
             <div className="flex items-start gap-3">
               <span className="material-symbols-outlined text-primary-fixed text-[20px] shrink-0 mt-0.5">
