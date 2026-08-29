@@ -1,11 +1,13 @@
+'use client';
+
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { localImages, statsData, workshopCapabilities, companyInfo } from '../data';
-import StatsCounter from '../components/StatsCounter';
-import SplitText from '../components/SplitText';
-import LocationMap from '../components/LocationMap';
-import img from '../../public/about.png'
-import img2 from '../../public/about2.jfif'
+import { statsData, workshopCapabilities, companyInfo } from '../../data';
+import StatsCounter from '../../components/StatsCounter';
+import SplitText from '../../components/SplitText';
+import LocationMap from '../../components/LocationMap';
+import { useApp } from '../../context/AppContext';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,25 +18,29 @@ const fadeInUp = {
   }
 };
 
-export default function About({ onOpenQuote, setActivePage }) {
-  const navigateTo = (page) => {
-    setActivePage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+export default function AboutClient() {
+  const { openQuoteModal } = useApp();
 
   return (
     <div className="flex flex-col w-full text-right overflow-hidden">
       {/* 1. HERO SECTION */}
-      <section className="relative w-full min-h-screen  flex items-center justify-center bg-inverse-surface pt-32 pb-20 overflow-hidden">
+      <section className="relative w-full min-h-screen flex items-center justify-center bg-inverse-surface pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <motion.img
+          <motion.div
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.28 }}
             transition={{ duration: 1.2 }}
-            src={img} // photo_4
-            alt="من نحن - رواد الإبداع"
-            className="w-full h-full object-cover"
-          />
+            className="w-full h-full relative"
+          >
+            <Image
+              src="/about.png"
+              alt="من نحن - رواد الإبداع للإنتاج الإعلاني"
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/85 to-transparent"></div>
           <div className="absolute inset-0 bg-dot-pattern opacity-10"></div>
           <div className="absolute top-1/3 -right-20 w-80 h-80 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
@@ -51,7 +57,7 @@ export default function About({ onOpenQuote, setActivePage }) {
         >
           <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md mb-6 shadow-lg">
             <span className="w-2 h-2 rounded-full bg-primary-fixed"></span>
-            <span className="text-xs  font-black text-primary-fixed uppercase tracking-wider">
+            <span className="text-xs font-black text-primary-fixed uppercase tracking-wider">
               من نحن | رواد الإبداع
             </span>
           </motion.div>
@@ -79,14 +85,18 @@ export default function About({ onOpenQuote, setActivePage }) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 relative"
+            className="lg:col-span-5 relative h-[460px]"
           >
             <div className="absolute -inset-3 bg-primary/10 rounded-3xl -z-10"></div>
-            <img
-              src={img2} // photo_2
-              alt="ورشة تصنيع اللوحات الإعلانية"
-              className="w-full h-[460px] object-cover rounded-3xl shadow-2xl border border-surface-variant"
-            />
+            <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-surface-variant">
+              <Image
+                src="/about2.jfif"
+                alt="ورشة ومصنع تصنيع اللوحات الإعلانية - رواد الإبداع"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
           </motion.div>
 
           <motion.div
@@ -97,7 +107,7 @@ export default function About({ onOpenQuote, setActivePage }) {
             className="lg:col-span-7"
           >
             <span className="text-xs font-black text-primary uppercase tracking-widest mb-2 block">
-              قصتنا ومسيرتنا
+              قصتنا ومسيرتنا في رواد الإبداع
             </span>
             <SplitText
               text="أكثر من عشر سنوات من الريادة في صناعة اللوحات الإعلانية"
@@ -109,7 +119,7 @@ export default function About({ onOpenQuote, setActivePage }) {
             />
             <div className="space-y-4 text-on-surface-variant text-sm sm:text-base leading-relaxed">
               <p>
-                بدأت رحلتنا برؤية واضحة: الارتقاء بمستوى صناعة اللوحات الإعلانية في المملكة العربية السعودية من مجرد أدوات تعريفية إلى تحف فنية هندسية تعكس جوهر العلامة التجارية وتخاطب الجمهور بجاذبية لا تقاوم.
+                بدأت رحلتنا في رواد الإبداع برؤية واضحة: الارتقاء بمستوى صناعة اللوحات الإعلانية في المملكة العربية السعودية من مجرد أدوات تعريفية إلى تحف فنية هندسية تعكس جوهر العلامة التجارية وتخاطب الجمهور بجاذبية لا تقاوم.
               </p>
               <p>
                 على مدار السنوات، طورنا قدراتنا الإنتاجية واستثمرنا في أحدث التقنيات العالمية من مكائن الليزر والـ CNC والطباعة الرقمية UV، لنصبح الشريك الموثوق لكبرى الشركات والكيانات في المملكة، حيث نمزج بين الإبداع الفني والصلابة الهندسية.
@@ -190,12 +200,12 @@ export default function About({ onOpenQuote, setActivePage }) {
         </div>
       </section>
 
-      {/* 5. WORKSHOP & CAPABILITIES (إمكانياتنا) */}
+      {/* 5. WORKSHOP & CAPABILITIES */}
       <section className="py-20 lg:py-28 w-full bg-surface-container-high">
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-black text-primary uppercase tracking-widest mb-2 block">
-              إمكانيات المصنع
+              إمكانيات مصنع رواد الإبداع
             </span>
             <SplitText
               text="ورشة عمل متكاملة بأحدث التقنيات العالمية"
@@ -206,7 +216,7 @@ export default function About({ onOpenQuote, setActivePage }) {
               textAlign="center"
             />
             <p className="text-on-surface-variant text-sm sm:text-base">
-              نفخر بامتلاكنا لواحدة من أحدث منشآت الإنتاج الإعلاني في الرياض، مجهزة بمكائن القص بالليزر، وطابعات عريضة، وأنظمة تشكيل المعادن الدقيقة.
+              نفخر بامتلاكنا لواحدة من أحدث منشآت الإنتاج الإعلاني في جدة، مجهزة بمكائن القص بالليزر، وطابعات عريضة، وأنظمة تشكيل المعادن الدقيقة.
             </p>
           </div>
 
@@ -222,12 +232,14 @@ export default function About({ onOpenQuote, setActivePage }) {
                 className="bg-surface rounded-3xl border border-surface-variant overflow-hidden group hover:shadow-2xl transition-all"
               >
                 <div className="h-60 overflow-hidden relative">
-                  <img
+                  <Image
                     src={cap.image}
-                    alt={cap.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    alt={`${cap.title} - مصنع رواد الإبداع للإنتاج الإعلاني`}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute top-4 right-4 w-11 h-11 rounded-2xl bg-surface/90 backdrop-blur-md flex items-center justify-center text-primary shadow-md">
+                  <div className="absolute top-4 right-4 w-11 h-11 rounded-2xl bg-surface/90 backdrop-blur-md flex items-center justify-center text-primary shadow-md z-10">
                     <span className="material-symbols-outlined text-[24px]">
                       {cap.icon}
                     </span>
@@ -254,7 +266,7 @@ export default function About({ onOpenQuote, setActivePage }) {
       <section className="py-24 bg-primary text-white text-center relative overflow-hidden">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
           <SplitText
-            text="هل ترغب بزيارة مصنعنا أو مناقشة مشروعك؟"
+            text="هل ترغب بزيارة مصنع رواد الإبداع أو مناقشة مشروعك؟"
             className="text-2xl sm:text-4xl font-black mb-4 text-white justify-center md:pb-3"
             tag="h2"
             delay={50}
@@ -262,11 +274,11 @@ export default function About({ onOpenQuote, setActivePage }) {
             textAlign="center"
           />
           <p className="text-white/90 text-sm sm:text-base mb-8 max-w-xl mx-auto leading-relaxed">
-            أبوابنا مفتوحة لزيارة ورش العمل والاطلاع على عينات الخامات ونماذج الإنتاج المباشرة والتشاور مع مهندسينا.
+            أبوابنا في رواد الإبداع مفتوحة لزيارة ورش العمل والاطلاع على عينات الخامات ونماذج الإنتاج المباشرة والتشاور مع مهندسينا.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent('السلام عليكم، أود طلب عرض سعر ومناقشة تفاصيل مشروعي بعد الاطلاع على صفحة من نحن.')}`}
+              href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent('السلام عليكم، أود طلب عرض سعر ومناقشة تفاصيل مشروعي بعد الاطلاع على صفحة من نحن في رواد الإبداع.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white text-primary hover:bg-surface-container-low px-8 py-3.5 rounded-full font-bold text-sm transition-all shadow-xl flex items-center gap-2 hover:scale-105 active:scale-95"
@@ -274,7 +286,7 @@ export default function About({ onOpenQuote, setActivePage }) {
               <span>اطلب عرض سعر عبر واتساب</span>
             </a>
             <a
-              href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent('السلام عليكم، أود التواصل مع الفريق الهندسي لمناقشة تفاصيل مشروعي.')}`}
+              href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent('السلام عليكم، أود التواصل مع الفريق الهندسي في رواد الإبداع لمناقشة تفاصيل مشروعي.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2"

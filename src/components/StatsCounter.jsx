@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function StatsCounter({ target, suffix = '', duration = 1500 }) {

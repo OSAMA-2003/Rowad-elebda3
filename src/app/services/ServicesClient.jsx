@@ -1,8 +1,10 @@
+'use client';
+
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { servicesData, qualityStandards, localImages, companyInfo } from '../data';
-import SplitText from '../components/SplitText';
-import img2 from '../../public/about2.jfif'
+import { servicesData, qualityStandards, localImages, companyInfo } from '../../data';
+import SplitText from '../../components/SplitText';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,21 +15,28 @@ const fadeInUp = {
   }
 };
 
-export default function Services({ onOpenQuote, setActivePage }) {
+export default function ServicesClient() {
   return (
     <div className="flex flex-col w-full text-right overflow-hidden">
       {/* 1. HERO SECTION */}
       <section className="relative w-full min-h-screen flex items-center justify-center bg-inverse-surface pt-32 pb-20 overflow-hidden">
         {/* Background Image with Dark Gradient */}
         <div className="absolute inset-0 z-0">
-          <motion.img
+          <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.25 }}
             transition={{ duration: 1.2 }}
-            src={img2}
-            alt="خدمات رواد الإبداع"
-            className="w-full h-full object-cover"
-          />
+            className="w-full h-full relative"
+          >
+            <Image
+              src="/about2.jfif"
+              alt="خدمات رواد الإبداع للإنتاج الإعلاني وتصنيع اللوحات"
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/85 to-transparent"></div>
         </div>
 
@@ -39,7 +48,7 @@ export default function Services({ onOpenQuote, setActivePage }) {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-primary-fixed text-xs font-bold mb-6 backdrop-blur-md">
             <span className="material-symbols-outlined text-[16px]">precision_manufacturing</span>
-            حلول وتطبيقات متكاملة
+            حلول وتطبيقات رواد الإبداع المتكاملة
           </div>
 
           <SplitText
@@ -55,12 +64,12 @@ export default function Services({ onOpenQuote, setActivePage }) {
             variants={fadeInUp}
             className="text-base sm:text-lg text-surface-container-low max-w-2xl mx-auto mb-8 leading-relaxed"
           >
-            نقدم مجموعة شاملة من خدمات الإنتاج الإعلاني والتصنيع، من اللوحات الخارجية العملاقة إلى التفاصيل الدقيقة للحروف البارزة، معتمدين على أحدث تقنيات التصنيع وأجود الخامات العالمية.
+            نقدم في رواد الإبداع مجموعة شاملة من خدمات الإنتاج الإعلاني والتصنيع، من اللوحات الخارجية العملاقة إلى التفاصيل الدقيقة للحروف البارزة، معتمدين على أحدث تقنيات التصنيع وأجود الخامات العالمية.
           </motion.p>
 
           <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-4">
             <a
-              href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent('السلام عليكم، أود الاستفسار وطلب استشارة وعرض سعر لخدمات الإنتاج الإعلاني.')}`}
+              href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent('السلام عليكم، أود الاستفسار وطلب استشارة وعرض سعر لخدمات الإنتاج الإعلاني من رواد الإبداع.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-full text-sm font-bold transition-all shadow-xl shadow-[#25D366]/30 flex items-center gap-2.5 hover:scale-105 active:scale-95"
@@ -80,7 +89,7 @@ export default function Services({ onOpenQuote, setActivePage }) {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
             <div className="max-w-2xl">
               <span className="text-xs font-black text-primary uppercase tracking-widest mb-2 block">
-                دليل الخدمات المتكامل
+                دليل خدمات رواد الإبداع المتكامل
               </span>
               <SplitText
                 text="خبرات هندسية وفنية في خدمة علامتك التجارية"
@@ -91,7 +100,7 @@ export default function Services({ onOpenQuote, setActivePage }) {
                 textAlign="right"
               />
               <p className="text-on-surface-variant text-sm sm:text-base mt-2 leading-relaxed">
-                نجمع بين دقة التصنيع الهندسي والإبداع الفني لنقدم لك منتجات إعلانية تعكس قيمة علامتك وتصمد أمام كافة التحديات المناخية.
+                نجمع في رواد الإبداع بين دقة التصنيع الهندسي والإبداع الفني لنقدم لك منتجات إعلانية تعكس قيمة علامتك وتصمد أمام كافة التحديات المناخية.
               </p>
             </div>
           </div>
@@ -110,10 +119,12 @@ export default function Services({ onOpenQuote, setActivePage }) {
                 {/* Image & Badge */}
                 <div>
                   <div className="h-64 overflow-hidden relative bg-inverse-surface">
-                    <img
+                    <Image
                       src={service.image}
-                      alt={service.title}
+                      alt={`${service.title} - رواد الإبداع للإنتاج الإعلاني`}
+                      fill
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute top-4 right-4 z-10 bg-surface/90 backdrop-blur-md px-3.5 py-1 rounded-full text-primary font-black text-xs border border-primary/20 shadow-md">
                       {service.num}
@@ -157,7 +168,7 @@ export default function Services({ onOpenQuote, setActivePage }) {
                 {/* Footer Action */}
                 <div className="px-8 pb-8 pt-0">
                   <a
-                    href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(`السلام عليكم، أود الاستفسار وطلب عرض سعر لخدمة (${service.title}).`)}`}
+                    href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(`السلام عليكم، أود الاستفسار وطلب عرض سعر لخدمة (${service.title}) من رواد الإبداع.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3.5 px-4 rounded-2xl bg-surface hover:bg-[#25D366] hover:text-white border border-outline-variant hover:border-[#25D366] text-primary font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 group/btn shadow-sm"
@@ -188,7 +199,7 @@ export default function Services({ onOpenQuote, setActivePage }) {
               className="lg:col-span-7"
             >
               <span className="text-xs font-black text-primary-fixed mb-2 block tracking-widest uppercase">
-                معايير الجودة والصلابة
+                معايير الجودة والصلابة في رواد الإبداع
               </span>
               <SplitText
                 text="مواد خام عالمية معتمدة لتصنيع يدوم لسنوات طويلة"
@@ -199,7 +210,7 @@ export default function Services({ onOpenQuote, setActivePage }) {
                 textAlign="right"
               />
               <p className="text-surface-container-low text-sm sm:text-base mb-10 leading-relaxed">
-                في الإنتاج الإعلاني، الجودة تبدأ من المادة الخام. نحن نستورد ونستخدم أفضل المواد المعتمدة عالمياً لضمان مقاومة منتجاتنا للظروف المناخية القاسية في المملكة، من أشعة الشمس الحارقة إلى العواصف الرملية.
+                في الإنتاج الإعلاني، الجودة تبدأ من المادة الخام. نحن في رواد الإبداع نستورد ونستخدم أفضل المواد المعتمدة عالمياً لضمان مقاومة منتجاتنا للظروف المناخية القاسية في المملكة، من أشعة الشمس الحارقة إلى العواصف الرملية.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -229,10 +240,12 @@ export default function Services({ onOpenQuote, setActivePage }) {
               className="lg:col-span-5 relative"
             >
               <div className="relative h-[460px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                <img
-                  src={localImages[16].file} // photo_18
-                  alt="ضمان الجودة"
-                  className="w-full h-full object-cover"
+                <Image
+                  src={localImages[16].file}
+                  alt="ضمان الجودة 5 سنوات - رواد الإبداع"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8">
                   <div className="bg-surface/95 backdrop-blur-md p-6 rounded-2xl border border-surface-variant shadow-xl text-on-surface">
@@ -244,7 +257,7 @@ export default function Services({ onOpenQuote, setActivePage }) {
                       </div>
                       <div>
                         <h4 className="text-lg font-bold text-on-surface">
-                          ضمان شامل حتى ٥ سنوات
+                          ضمان شامل حتى ٥ سنوات من رواد الإبداع
                         </h4>
                         <p className="text-xs text-on-surface-variant mt-1 leading-relaxed">
                           يشمل الهياكل المعدنية، ثبات الألوان، والدوائر الكهربائية ووحدات LED.
@@ -271,10 +284,10 @@ export default function Services({ onOpenQuote, setActivePage }) {
             textAlign="center"
           />
           <p className="text-on-surface-variant text-sm sm:text-base mb-8 leading-relaxed">
-            فريقنا الهندسي والفني جاهز لدراسة مخططات مشروعك وتقديم أفضل الحلول التصنيعية التي تناسب ميزانيتك وتتجاوز توقعاتك.
+            فريقنا الهندسي والفني في رواد الإبداع جاهز لدراسة مخططات مشروعك وتقديم أفضل الحلول التصنيعية التي تناسب ميزانيتك وتتجاوز توقعاتك.
           </p>
           <a
-            href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent('السلام عليكم، أود التواصل مع المستشار الهندسي لتنفيذ مشروع إعلاني بمواصفات خاصة.')}`}
+            href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent('السلام عليكم، أود التواصل مع المستشار الهندسي في رواد الإبداع لتنفيذ مشروع إعلاني بمواصفات خاصة.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-10 py-4 rounded-full font-bold text-sm sm:text-base transition-all shadow-lg shadow-[#25D366]/30 hover:scale-105 active:scale-95"

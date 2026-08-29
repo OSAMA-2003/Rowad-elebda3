@@ -1,5 +1,10 @@
+'use client';
+
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import {
   localImages,
   heroDesktop,
@@ -10,38 +15,17 @@ import {
   whyUsData,
   processData,
   industriesData,
-  testimonialsData,
-  partnersData,
-  faqData,
   companyInfo
 } from '../data';
 import StatsCounter from '../components/StatsCounter';
 import SplitText from '../components/SplitText';
 import LocationMap from '../components/LocationMap';
+import { useApp } from '../context/AppContext';
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-  }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1
-    }
-  }
-};
-
-export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
+export default function HomeClient() {
+  const router = useRouter();
+  const { setSelectedProject } = useApp();
   const [activePortfolioFilter, setActivePortfolioFilter] = useState('all');
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
   const portfolioCategories = [
     { key: 'all', label: 'الكل' },
@@ -57,38 +41,47 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
       ? localImages.slice(0, 6)
       : localImages.filter((img) => img.category === activePortfolioFilter).slice(0, 6);
 
-  const navigateTo = (page) => {
-    setActivePage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <div className="flex flex-col w-full min-h-screen overflow-hidden text-right">
       {/* 1. HERO SECTION */}
       <section className="relative w-full h-screen min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           {/* Desktop View Image */}
-          <motion.img
+          <motion.div
             initial={{ scale: 1.05, opacity: 0.8 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
-            src={heroDesktop}
-            alt="رواد الإبداع للإنتاج الإعلاني - واجهة المتجر"
-            className="hidden md:block w-full h-full object-cover object-center"
-          />
+            className="hidden md:block w-full h-full relative"
+          >
+            <Image
+              src={heroDesktop}
+              alt="رواد الإبداع للإنتاج الإعلاني - واجهة متجر وتصنيع لوحات إعلانية"
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+          </motion.div>
           {/* Mobile View Image */}
-          <motion.img
+          <motion.div
             initial={{ scale: 1.05, opacity: 0.8 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
-            src={heroMobile}
-            alt="رواد الإبداع للإنتاج الإعلاني - واجهة المتجر"
-            className="block md:hidden w-full h-full object-cover object-center"
-          />
+            className="block md:hidden w-full h-full relative"
+          >
+            <Image
+              src={heroMobile}
+              alt="رواد الإبداع للدعاية والإعلان - واجهة المتجر على الجوال"
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+          </motion.div>
         </div>
       </section>
 
-      {/* 2. STATS COUNTER BAR (LIGHT CONTRAST BAR) */}
+      {/* 2. STATS COUNTER BAR */}
       <section className="w-full bg-white text-slate-900 py-12 relative z-30 border-y border-slate-200 shadow-md">
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16">
           <motion.div
@@ -118,7 +111,7 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
         </div>
       </section>
 
-      {/* 3. CORE SERVICES OVERVIEW (LUXURY MIDNIGHT NAVY SECTION) */}
+      {/* 3. CORE SERVICES OVERVIEW */}
       <section className="w-full bg-[#071325] text-white py-20 lg:py-28 border-y border-white/10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-fixed/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -128,10 +121,10 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
             <div className="max-w-2xl">
               <div className="flex items-center gap-2 text-primary-fixed font-black text-xs uppercase mb-2">
                 <span className="w-8 h-0.5 bg-primary-fixed rounded-full"></span>
-                <span>خدماتنا المتميزة</span>
+                <span>خدمات رواد الإبداع المتميزة</span>
               </div>
               <SplitText
-                text="حلول إعلانية وهندسية متكاملة"
+                text="حلول إعلانية وهندسية متكاملة لعلامتك التجارية"
                 className="text-2xl sm:text-4xl font-black text-white md:pb-3"
                 tag="h2"
                 delay={50}
@@ -139,20 +132,19 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
                 textAlign="right"
               />
               <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
-                نقدم مجموعة شاملة من الخدمات الإعلانية لتلبية كافة احتياجات علامتك التجارية بأعلى معايير الجودة والاشتراطات المعتمدة.
+                نقدم في رواد الإبداع مجموعة شاملة من الخدمات الإعلانية لتلبية كافة احتياجات المحلات والشركات بأعلى معايير الجودة واشتراطات منصة بلدي.
               </p>
             </div>
 
-            <motion.button
-              whileHover={{ x: -4 }}
-              onClick={() => navigateTo('services')}
+            <Link
+              href="/services"
               className="inline-flex items-center gap-2 text-primary-fixed hover:text-white font-black text-sm group"
             >
               <span>تصفح كافة الخدمات</span>
               <span className="material-symbols-outlined transform group-hover:-translate-x-1.5 transition-transform">
                 arrow_back
               </span>
-            </motion.button>
+            </Link>
           </div>
 
           {/* Service Cards Grid */}
@@ -165,7 +157,7 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
                 whileHover={{ y: -6 }}
-                onClick={() => navigateTo('services')}
+                onClick={() => router.push('/services')}
                 className="group bg-white/5 hover:bg-white/10 rounded-3xl border border-white/10 p-8 shadow-xl hover:border-primary/50 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden backdrop-blur-md"
               >
                 <div>
@@ -203,7 +195,7 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
         </div>
       </section>
 
-      {/* 4. FEATURED CASE STUDY (CRISP PURE WHITE SECTION) */}
+      {/* 4. FEATURED CASE STUDY */}
       <section className="w-full bg-white py-20 lg:py-28 border-y border-slate-200 relative overflow-hidden">
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -217,11 +209,11 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
             >
               <div className="flex items-center gap-2 text-primary font-black text-xs uppercase mb-2">
                 <span className="w-8 h-0.5 bg-primary rounded-full"></span>
-                <span>دراسة حالة واقعية</span>
+                <span>دراسة حالة واقعية | رواد الإبداع</span>
               </div>
 
               <SplitText
-                text="من الفكرة الهندسية إلى التنفيذ الواقعي"
+                text="من الفكرة الهندسية إلى التنفيذ الواقعي المتقن"
                 className="text-2xl sm:text-4xl font-black text-slate-900 mb-4 md:pb-3"
                 tag="h2"
                 delay={50}
@@ -246,16 +238,44 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
                   </div>
                 ))}
               </div>
-
-
             </motion.div>
 
-
+            {/* Visual Highlight */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-6 relative"
+            >
+              <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100 relative group h-[420px]">
+                <Image
+                  src={localImages[1].file}
+                  alt="تنفيذ منصات عرض ولوحات إعلانية - رواد الإبداع"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-8 text-white">
+                  <span className="text-xs font-bold text-primary-fixed mb-1">
+                    {featuredCaseStudy.category}
+                  </span>
+                  <h3 className="text-xl font-bold mb-2">
+                    {featuredCaseStudy.title}
+                  </h3>
+                  <div className="flex items-center gap-4 text-xs text-slate-300">
+                    <span>العميل: {featuredCaseStudy.client}</span>
+                    <span>•</span>
+                    <span>المدينة: {featuredCaseStudy.city}</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 5. PORTFOLIO SHOWCASE (DEEP MIDNIGHT CHARCOAL SECTION) */}
+      {/* 5. PORTFOLIO SHOWCASE */}
       <section className="w-full bg-[#0a192f] text-white py-20 lg:py-28 border-y border-white/10 relative overflow-hidden">
         <div className="absolute top-1/2 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -263,11 +283,11 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 text-primary-fixed font-black text-xs uppercase mb-2">
               <span className="w-6 h-0.5 bg-primary-fixed rounded-full"></span>
-              <span>معرض أعمالنا</span>
+              <span>معرض أعمال رواد الإبداع</span>
               <span className="w-6 h-0.5 bg-primary-fixed rounded-full"></span>
             </div>
             <SplitText
-              text="نماذج من مشاريعنا المنفذة"
+              text="نماذج من مشاريع اللوحات والدعاية المنفذة"
               className="text-2xl sm:text-4xl font-black text-white md:pb-3"
               tag="h2"
               delay={50}
@@ -275,39 +295,42 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
               textAlign="center"
             />
             <p className="text-slate-300 text-sm sm:text-base mt-2">
-              نفخر بتنفيذ مشاريع مميزة لعملائنا في مختلف القطاعات التجارية والصناعية.
+              نفخر في رواد الإبداع بتنفيذ مشاريع مميزة لعملائنا في مختلف القطاعات التجارية والصناعية بالسعودية.
             </p>
           </div>
 
-          {/* Filter Pills (Static, No animations) */}
+          {/* Filter Pills */}
           <div className="flex flex-wrap justify-center gap-2.5 mb-12">
             {portfolioCategories.map((cat) => (
               <button
                 key={cat.key}
                 onClick={() => setActivePortfolioFilter(cat.key)}
-                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-colors ${activePortfolioFilter === cat.key
-                  ? 'bg-primary text-white shadow-md shadow-primary/30'
-                  : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 hover:text-white'
-                  }`}
+                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-colors ${
+                  activePortfolioFilter === cat.key
+                    ? 'bg-primary text-white shadow-md shadow-primary/30'
+                    : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 hover:text-white'
+                }`}
               >
                 {cat.label}
               </button>
             ))}
           </div>
 
-          {/* Image Grid (Static, No layout animation) */}
+          {/* Image Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPortfolio.map((item) => (
               <div
                 key={item.id}
-                onClick={() => onSelectProject(item)}
+                onClick={() => setSelectedProject(item)}
                 className="group relative rounded-3xl overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/5 border border-white/10"
               >
                 <div className="relative h-72 overflow-hidden bg-black/40">
-                  <img
+                  <Image
                     src={item.file}
-                    alt={item.title}
-                    className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                    alt={`${item.title} - رواد الإبداع للإنتاج الإعلاني`}
+                    fill
+                    className="object-cover transform transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
                     <span className="text-xs text-primary-fixed font-bold mb-1">
@@ -326,30 +349,28 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
           </div>
 
           <div className="text-center mt-12">
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => navigateTo('portfolio')}
+            <Link
+              href="/portfolio"
               className="inline-flex items-center justify-center h-13 px-8 rounded-full border-2 border-primary-fixed text-primary-fixed font-bold text-sm hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm bg-white/5"
             >
-              <span>استعراض كافة الأعمال</span>
+              <span>استعراض كافة أعمال رواد الإبداع</span>
               <span className="material-symbols-outlined mr-2 text-[18px]">arrow_back</span>
-            </motion.button>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* 6. WHY CHOOSE US (SOFT ICE BLUE & WHITE SECTION) */}
+      {/* 6. WHY CHOOSE US */}
       <section className="w-full bg-gradient-to-b from-[#f0f6ff] via-white to-[#f0f6ff] py-20 lg:py-28 border-y border-blue-100">
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 text-primary font-black text-xs uppercase mb-2">
               <span className="w-6 h-0.5 bg-primary rounded-full"></span>
-              <span>مميزاتنا التنافسية</span>
+              <span>مميزات رواد الإبداع التنافسية</span>
               <span className="w-6 h-0.5 bg-primary rounded-full"></span>
             </div>
             <SplitText
-              text="لماذا يختارنا عملاؤنا؟"
+              text="لماذا يختار عملاؤنا رواد الإبداع؟"
               className="text-2xl sm:text-4xl font-black text-slate-900 md:pb-3"
               tag="h2"
               delay={50}
@@ -357,7 +378,7 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
               textAlign="center"
             />
             <p className="text-slate-600 text-sm sm:text-base mt-2">
-              نجمع بين الدقة الهندسية والخبرة العريقة لتقديم تجربة إنتاج إعلاني استثنائية.
+              نجمع في رواد الإبداع بين الدقة الهندسية والخبرة العريقة لتقديم تجربة إنتاج إعلاني استثنائية.
             </p>
           </div>
 
@@ -389,17 +410,17 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
         </div>
       </section>
 
-      {/* 7. PRODUCTION WORKFLOW (DEEP MIDNIGHT NAVY SECTION) */}
+      {/* 7. PRODUCTION WORKFLOW */}
       <section className="w-full bg-[#071325] text-white py-20 lg:py-28 border-y border-white/10 relative overflow-hidden">
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 text-primary-fixed font-black text-xs uppercase mb-2">
               <span className="w-6 h-0.5 bg-primary-fixed rounded-full"></span>
-              <span>خطوات التنفيذ</span>
+              <span>خطوات التنفيذ في رواد الإبداع</span>
               <span className="w-6 h-0.5 bg-primary-fixed rounded-full"></span>
             </div>
             <SplitText
-              text="آلية عمل هندسية مدروسة"
+              text="آلية عمل هندسية مدروسة تضمن الجودة"
               className="text-2xl sm:text-4xl font-black text-white md:pb-3"
               tag="h2"
               delay={50}
@@ -407,7 +428,7 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
               textAlign="center"
             />
             <p className="text-slate-300 text-sm sm:text-base mt-2">
-              ٥ خطوات واضحة تضمن تسليم مشروعك بأعلى درجات الاحترافية والالتزام.
+              ٥ خطوات واضحة تضمن تسليم مشروعك الإعلاني بأعلى درجات الاحترافية والالتزام.
             </p>
           </div>
 
@@ -436,17 +457,17 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
         </div>
       </section>
 
-      {/* 8. INDUSTRIES SERVED (COOL SLATE TINT) */}
+      {/* 8. INDUSTRIES SERVED */}
       <section className="w-full bg-[#f8fafc] py-20 lg:py-28 border-t border-slate-200">
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 text-primary font-black text-xs uppercase mb-2">
               <span className="w-6 h-0.5 bg-primary rounded-full"></span>
-              <span>القطاعات والأنشطة</span>
+              <span>القطاعات التي نخدمها</span>
               <span className="w-6 h-0.5 bg-primary rounded-full"></span>
             </div>
             <SplitText
-              text="نخدم مختلف القطاعات بالمملكة"
+              text="نخدم كبرى الشركات والأنشطة التجارية في السعودية"
               className="text-2xl sm:text-4xl font-black text-slate-900 md:pb-3"
               tag="h2"
               delay={50}
@@ -479,80 +500,8 @@ export default function Home({ setActivePage, onOpenQuote, onSelectProject }) {
         </div>
       </section>
 
-      {/* 9. TESTIMONIALS & PARTNERS (CRISP PURE WHITE SECTION) */}
-      {/* <section className="w-full bg-white py-20 lg:py-28 border-y border-slate-200">
-        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 text-primary font-black text-xs uppercase mb-2">
-              <span className="w-6 h-0.5 bg-primary rounded-full"></span>
-              <span>آراء العملاء وشركاء النجاح</span>
-              <span className="w-6 h-0.5 bg-primary rounded-full"></span>
-            </div>
-            <SplitText
-              text="ثقة نعتز بها وشراكات مستدامة"
-              className="text-2xl sm:text-4xl font-black text-slate-900 md:pb-3"
-              tag="h2"
-              delay={50}
-              duration={0.6}
-              textAlign="center"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {testimonialsData.map((item, idx) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-200/80 relative flex flex-col justify-between hover:shadow-xl transition-all"
-              >
-                <div>
-                  <span className="material-symbols-outlined text-[40px] text-primary/20 absolute top-6 left-6">
-                    format_quote
-                  </span>
-                  <p className="text-slate-700 text-sm leading-relaxed mb-6 relative z-10">
-                    "{item.quote}"
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-3 pt-4 border-t border-slate-200">
-                  <div className="w-11 h-11 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold text-sm shrink-0">
-                    {item.initials}
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-slate-900">{item.name}</h4>
-                    <p className="text-xs text-slate-500">{item.role}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200/80 shadow-sm">
-            <p className="text-xs font-bold text-center text-slate-500 uppercase tracking-widest mb-6">
-              شركاء النجاح المعتمدون
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8">
-              {partnersData.map((partner, idx) => (
-                <div
-                  key={idx}
-                  className="px-6 py-3 rounded-2xl bg-white border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 hover:border-primary hover:text-primary transition-colors cursor-default shadow-sm"
-                >
-                  {partner}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* 10. GOOGLE MAPS & PHYSICAL LOCATION */}
+      {/* 9. GOOGLE MAPS & PHYSICAL LOCATION */}
       <LocationMap theme="dark" />
-
-
     </div>
   );
 }

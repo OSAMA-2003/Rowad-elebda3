@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function QuoteModal({ isOpen, onClose, initialService = '', onShowToast }) {
@@ -11,6 +13,12 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', onSho
     notes: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (initialService) {
+      setFormData((prev) => ({ ...prev, service: initialService }));
+    }
+  }, [initialService]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

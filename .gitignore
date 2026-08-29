@@ -1,3 +1,19 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Next.js build output & cache
+.next/
+out/
+build/
+dist/
+dist-ssr/
+.turbo/
+
+# Testing & Coverage
+coverage/
+
 # Logs
 logs
 *.log
@@ -7,15 +23,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Environment variables
+.env*.local
+.env
+!.env.example
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*

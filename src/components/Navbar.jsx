@@ -1,15 +1,17 @@
+'use client';
+
 import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { brandLogo, navLinks, companyInfo } from '../data';
+import { useApp } from '../context/AppContext';
 
-export default function Navbar({ activePage, setActivePage, onOpenQuote }) {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const handleNavClick = (path) => {
-    setActivePage(path);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const pathname = usePathname();
+  const { openQuoteModal } = useApp();
 
   const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent('السلام عليكم، أود التواصل والاستفسار عن خدمات رواد الإبداع.')}`;
 
@@ -22,31 +24,35 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote }) {
     >
       <div className="h-20 max-w-container-max mx-auto px-4 sm:px-6 lg:px-16 flex items-center justify-between gap-6">
         {/* Brand Logo */}
-        <motion.div
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => handleNavClick('home')}
-          className="flex items-center gap-3.5 cursor-pointer"
-        >
-          <img
-            src={brandLogo}
-            alt="رواد الإبداع للإنتاج الإعلاني"
-            className="h-10 sm:h-14 w-auto object-contain"
-          />
-        </motion.div>
+        <Link href="/" className="flex items-center gap-3.5 cursor-pointer">
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Image
+              src={brandLogo}
+              alt="رواد الإبداع للإنتاج الإعلاني"
+              width={180}
+              height={56}
+              className="h-10 sm:h-14 w-auto object-contain"
+              priority
+            />
+          </motion.div>
+        </Link>
 
         {/* Desktop Navigation with Animated Active Indicator */}
         <nav className="hidden lg:flex items-center gap-2 p-1.5 rounded-full bg-white/5 border border-white/10">
           {navLinks.map((link) => {
-            const isActive = activePage === link.path;
+            const isActive = pathname === link.path;
             return (
-              <button
+              <Link
                 key={link.path}
-                onClick={() => handleNavClick(link.path)}
-                className={`relative px-14 py-2 text-xs xl:text-sm font-bold transition-colors rounded-full z-10 ${isActive
-                  ? 'text-white'
-                  : 'text-surface-container-low hover:text-white'
-                  }`}
+                href={link.path}
+                className={`relative px-8 py-2 text-xs xl:text-sm font-bold transition-colors rounded-full z-10 ${
+                  isActive
+                    ? 'text-white'
+                    : 'text-surface-container-low hover:text-white'
+                }`}
               >
                 {isActive && (
                   <motion.div
@@ -56,7 +62,7 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote }) {
                   />
                 )}
                 {link.label}
-              </button>
+              </Link>
             );
           })}
         </nav>
@@ -79,7 +85,7 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote }) {
           <motion.button
             whileTap={{ scale: 0.92 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden w-10 h-10  hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+            className="lg:hidden w-10 h-10 hover:bg-white/20 text-white flex items-center justify-center transition-colors rounded-xl"
             aria-label="القائمة"
           >
             <span className="material-symbols-outlined text-[24px]">
@@ -101,29 +107,32 @@ export default function Navbar({ activePage, setActivePage, onOpenQuote }) {
           >
             <div className="flex flex-col space-y-2">
               {navLinks.map((link, idx) => {
-                const isActive = activePage === link.path;
+                const isActive = pathname === link.path;
                 return (
-                  <motion.button
-                    initial={{ x: 20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: idx * 0.05 }}
+                  <Link
                     key={link.path}
-                    onClick={() => handleNavClick(link.path)}
-                    className={`text-right py-3 px-4 rounded-xl text-sm font-bold transition-all flex items-center justify-between ${isActive
-                      ? 'bg-primary text-white shadow-lg'
-                      : 'text-surface-container-low hover:bg-white/5 hover:text-white'
-                      }`}
+                    href={link.path}
+                    onClick={() => setMobileMenuOpen(false)}
                   >
-                    <span>{link.label}</span>
-                    <span className="material-symbols-outlined text-[18px] opacity-70">
-                      chevron_left
-                    </span>
-                  </motion.button>
+                    <motion.div
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: idx * 0.05 }}
+                      className={`text-right py-3 px-4 rounded-xl text-sm font-bold transition-all flex items-center justify-between ${
+                        isActive
+                          ? 'bg-primary text-white shadow-lg'
+                          : 'text-surface-container-low hover:bg-white/5 hover:text-white'
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      <span className="material-symbols-outlined text-[18px] opacity-70">
+                        chevron_left
+                      </span>
+                    </motion.div>
+                  </Link>
                 );
               })}
             </div>
-
-
           </motion.div>
         )}
       </AnimatePresence>

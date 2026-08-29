@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { companyInfo } from '../data';
 
@@ -37,15 +40,21 @@ export default function ProjectLightbox({ project, onClose, onOpenQuote }) {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 max-h-[85vh] overflow-y-auto">
               {/* Image Column */}
-              <div className="lg:col-span-7 bg-inverse-surface flex items-center justify-center min-h-[300px] lg:min-h-[460px] overflow-hidden">
-                <motion.img
+              <div className="lg:col-span-7 bg-inverse-surface flex items-center justify-center min-h-[300px] lg:min-h-[460px] overflow-hidden relative">
+                <motion.div
                   initial={{ scale: 1.05, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.4 }}
-                  src={project.file}
-                  alt={project.title}
-                  className="w-full h-full object-cover max-h-[520px]"
-                />
+                  className="w-full h-full min-h-[300px] lg:min-h-[460px] relative"
+                >
+                  <Image
+                    src={project.file}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                  />
+                </motion.div>
               </div>
 
               {/* Details Column */}

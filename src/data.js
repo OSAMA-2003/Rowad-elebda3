@@ -544,8 +544,10 @@ export const companyInfo = {
 
 // Navigation Links
 export const navLinks = [
-  { path: 'home', label: 'الرئيسية' },
-  { path: 'about', label: 'من نحن' },
-  { path: 'services', label: 'خدماتنا' },
-  { path: 'portfolio', label: 'أعمالنا' }
+  { path: '/', label: 'الرئيسية' },
+  { path: '/about', label: 'من نحن' },
+  { path: '/services', label: 'خدماتنا' },
+  { path: '/portfolio', label: 'أعمالنا' }
 ];
+
+
