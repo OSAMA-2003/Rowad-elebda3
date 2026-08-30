@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { MapPin, Clock, Phone, Map, ExternalLink } from 'lucide-react';
 import { companyInfo } from '../data';
 import SplitText from './SplitText';
 
@@ -57,7 +58,7 @@ export default function LocationMap({ theme = 'dark', className = '' }) {
                 </span>
                 <div className="flex items-start gap-3 mt-2">
                   <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-0.5">
-                    <span className="material-symbols-outlined text-[22px]">location_on</span>
+                    <MapPin className="w-5 h-5" />
                   </div>
                   <div>
                     <h3 className={`font-bold text-base ${isDark ? 'text-white' : 'text-slate-900'}`}>
@@ -73,7 +74,7 @@ export default function LocationMap({ theme = 'dark', className = '' }) {
               {/* Working Hours */}
               <div className={`p-4 rounded-2xl border ${isDark ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-200'}`}>
                 <div className="flex items-center gap-2.5 text-xs font-bold text-primary mb-1">
-                  <span className="material-symbols-outlined text-[18px]">schedule</span>
+                  <Clock className="w-4 h-4 shrink-0" />
                   <span>أوقات العمل واستقبال الزوار</span>
                 </div>
                 <p className={`text-xs ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
@@ -89,7 +90,7 @@ export default function LocationMap({ theme = 'dark', className = '' }) {
                   className="w-full py-3.5 px-5 rounded-2xl bg-primary hover:bg-primary-container text-white font-bold text-sm transition-all shadow-lg shadow-primary/30 flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-[20px]">call</span>
+                    <Phone className="w-4.5 h-4.5 shrink-0" />
                     <span>اتصال هاتفي مباشر</span>
                   </div>
                   <span dir="ltr" className="text-xs sm:text-sm font-sans tracking-wide group-hover:underline">
@@ -129,11 +130,9 @@ export default function LocationMap({ theme = 'dark', className = '' }) {
                     : 'border-slate-300 text-slate-700 hover:bg-slate-100'
                 }`}
               >
-                <span className="material-symbols-outlined text-[18px]">map</span>
+                <Map className="w-4.5 h-4.5" />
                 <span>فتح الموقع في تطبيق خرائط Google</span>
-                <span className="material-symbols-outlined text-[16px] transform -scale-x-100">
-                  arrow_outward
-                </span>
+                <ExternalLink className="w-4 h-4" />
               </a>
             </div>
           </motion.div>

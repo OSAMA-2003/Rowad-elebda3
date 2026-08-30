@@ -20,6 +20,8 @@ import {
 import StatsCounter from '../components/StatsCounter';
 import SplitText from '../components/SplitText';
 import LocationMap from '../components/LocationMap';
+import LucideIcon from '../components/LucideIcon';
+import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export default function HomeClient() {
@@ -98,7 +100,7 @@ export default function HomeClient() {
                 className="flex flex-col items-center text-center gap-2 border-b md:border-b-0 md:border-l last:border-0 border-slate-200 pb-4 md:pb-0"
               >
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-1 shadow-sm">
-                  <span className="material-symbols-outlined text-[24px]">{stat.icon}</span>
+                  <LucideIcon name={stat.icon} className="w-6 h-6" />
                 </div>
                 <span className="text-3xl sm:text-4xl lg:text-5xl text-primary font-black tracking-tight">
                   +<StatsCounter target={stat.value} />
@@ -142,9 +144,7 @@ export default function HomeClient() {
               className="inline-flex items-center gap-2 text-primary-fixed hover:text-white font-black text-sm group"
             >
               <span>تصفح كافة الخدمات</span>
-              <span className="material-symbols-outlined transform group-hover:-translate-x-1.5 transition-transform">
-                arrow_back
-              </span>
+              <ArrowLeft className="w-4.5 h-4.5 transform group-hover:-translate-x-1.5 transition-transform" />
             </Link>
           </div>
 
@@ -164,9 +164,7 @@ export default function HomeClient() {
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary-fixed group-hover:bg-primary group-hover:text-white transition-all shadow-sm border border-primary/30">
-                      <span className="material-symbols-outlined text-[28px]">
-                        {service.icon}
-                      </span>
+                      <LucideIcon name={service.icon} className="w-7 h-7" />
                     </div>
                     <span className="text-xs font-black text-slate-400">
                       {service.num}
@@ -184,9 +182,7 @@ export default function HomeClient() {
 
                 <div className="flex items-center justify-between pt-5 border-t border-white/10 text-primary-fixed text-xs font-bold">
                   <span>اكتشف التفاصيل الهندسية</span>
-                  <span className="material-symbols-outlined text-[18px] transform group-hover:-translate-x-1.5 transition-transform">
-                    arrow_back
-                  </span>
+                  <ArrowLeft className="w-4.5 h-4.5 transform group-hover:-translate-x-1.5 transition-transform" />
                 </div>
 
                 <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-primary to-primary-fixed scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-300"></div>
@@ -229,9 +225,7 @@ export default function HomeClient() {
               <div className="space-y-3.5 mb-8">
                 {featuredCaseStudy.highlights.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 shadow-sm hover:border-primary/30 transition-colors">
-                    <span className="material-symbols-outlined text-primary text-[24px] mt-0.5 shrink-0">
-                      check_circle
-                    </span>
+                    <CheckCircle2 className="w-6 h-6 text-primary mt-0.5 shrink-0" />
                     <div>
                       <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
                       <p className="text-xs text-slate-600 mt-1">{item.desc}</p>
@@ -249,26 +243,24 @@ export default function HomeClient() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-6 relative"
             >
-              <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100 relative group h-[420px]">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-100 aspect-4/3 group">
                 <Image
-                  src={localImages[1].file}
-                  alt="تنفيذ منصات عرض ولوحات إعلانية - رواد الإبداع"
+                  src={featuredCaseStudy.image}
+                  alt={featuredCaseStudy.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-8 text-white">
-                  <span className="text-xs font-bold text-primary-fixed mb-1">
-                    {featuredCaseStudy.category}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+                  <span className="text-xs font-bold text-primary-fixed bg-primary-container/80 backdrop-blur-md px-3 py-1 rounded-full w-max mb-2">
+                    مشروع مميز
                   </span>
-                  <h3 className="text-xl font-bold mb-2">
+                  <h3 className="text-2xl font-black text-white mb-1">
                     {featuredCaseStudy.title}
                   </h3>
-                  <div className="flex items-center gap-4 text-xs text-slate-300">
-                    <span>العميل: {featuredCaseStudy.client}</span>
-                    <span>•</span>
-                    <span>المدينة: {featuredCaseStudy.city}</span>
-                  </div>
+                  <p className="text-slate-200 text-sm">
+                    {featuredCaseStudy.subtitle}
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -277,18 +269,16 @@ export default function HomeClient() {
       </section>
 
       {/* 5. PORTFOLIO SHOWCASE */}
-      <section className="w-full bg-[#0a192f] text-white py-20 lg:py-28 border-y border-white/10 relative overflow-hidden">
-        <div className="absolute top-1/2 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
-
+      <section className="w-full bg-[#071325] text-white py-20 lg:py-28 border-y border-white/10 relative overflow-hidden">
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 text-primary-fixed font-black text-xs uppercase mb-2">
               <span className="w-6 h-0.5 bg-primary-fixed rounded-full"></span>
-              <span>معرض أعمال رواد الإبداع</span>
+              <span>معرض المشاريع الواقعية</span>
               <span className="w-6 h-0.5 bg-primary-fixed rounded-full"></span>
             </div>
             <SplitText
-              text="نماذج من مشاريع اللوحات والدعاية المنفذة"
+              text="شاهد نماذج حية من إبداعاتنا في المملكة"
               className="text-2xl sm:text-4xl font-black text-white md:pb-3"
               tag="h2"
               delay={50}
@@ -296,20 +286,20 @@ export default function HomeClient() {
               textAlign="center"
             />
             <p className="text-slate-300 text-sm sm:text-base mt-2">
-              نفخر في رواد الإبداع بتنفيذ مشاريع مميزة لعملائنا في مختلف القطاعات التجارية والصناعية بالسعودية.
+              مئات المشاريع الناجحة التي نفذناها لكبرى الماركات والمحلات والشركات.
             </p>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex flex-wrap justify-center gap-2.5 mb-12">
+          {/* Portfolio Filter Pills */}
+          <div className="flex items-center justify-center gap-2 flex-wrap mb-12">
             {portfolioCategories.map((cat) => (
               <button
                 key={cat.key}
                 onClick={() => setActivePortfolioFilter(cat.key)}
-                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-colors ${
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${
                   activePortfolioFilter === cat.key
-                    ? 'bg-primary text-white shadow-md shadow-primary/30'
-                    : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 hover:text-white'
+                    ? 'bg-primary text-white shadow-lg shadow-primary/30'
+                    : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/10'
                 }`}
               >
                 {cat.label}
@@ -317,35 +307,38 @@ export default function HomeClient() {
             ))}
           </div>
 
-          {/* Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPortfolio.map((item) => (
-              <div
+          {/* Portfolio Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPortfolio.map((item, idx) => (
+              <motion.div
                 key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
+                whileHover={{ y: -6 }}
                 onClick={() => setSelectedProject(item)}
-                className="group relative rounded-3xl overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/5 border border-white/10"
+                className="group relative rounded-3xl overflow-hidden aspect-4/3 bg-slate-900 cursor-pointer shadow-xl border border-white/10"
               >
-                <div className="relative h-72 overflow-hidden bg-black/40">
-                  <Image
-                    src={item.file}
-                    alt={`${item.title} - رواد الإبداع للإنتاج الإعلاني`}
-                    fill
-                    className="object-cover transform transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
-                    <span className="text-xs text-primary-fixed font-bold mb-1">
-                      {item.categoryName}
-                    </span>
-                    <h3 className="text-lg font-bold text-white mb-1">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-white/80 line-clamp-2">
-                      {item.description}
-                    </p>
-                  </div>
+                <Image
+                  src={item.file}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity flex flex-col justify-end p-6 text-white text-right">
+                  <span className="text-[11px] font-bold text-primary-fixed mb-1.5">
+                    {item.categoryName || item.category}
+                  </span>
+                  <h3 className="text-lg font-bold text-white mb-1 leading-snug group-hover:text-primary-fixed transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-slate-300 line-clamp-1">
+                    {item.description}
+                  </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -355,7 +348,7 @@ export default function HomeClient() {
               className="inline-flex items-center justify-center h-13 px-8 rounded-full border-2 border-primary-fixed text-primary-fixed font-bold text-sm hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm bg-white/5"
             >
               <span>استعراض كافة أعمال رواد الإبداع</span>
-              <span className="material-symbols-outlined mr-2 text-[18px]">arrow_back</span>
+              <ArrowLeft className="mr-2 w-4.5 h-4.5" />
             </Link>
           </div>
         </div>
@@ -395,9 +388,7 @@ export default function HomeClient() {
                 className="bg-white rounded-3xl p-8 border border-blue-100 text-center flex flex-col items-center hover:shadow-2xl hover:border-primary/40 transition-all group shadow-sm"
               >
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white text-primary transition-colors shadow-sm">
-                  <span className="material-symbols-outlined text-[32px]">
-                    {item.icon}
-                  </span>
+                  <LucideIcon name={item.icon} className="w-8 h-8" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">
                   {item.title}
@@ -485,9 +476,7 @@ export default function HomeClient() {
                 className="bg-white rounded-2xl p-6 text-center hover:shadow-xl hover:border-primary/40 transition-all border border-slate-200/80 flex flex-col items-center group cursor-default shadow-sm"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <span className="material-symbols-outlined text-[28px]">
-                    {ind.icon}
-                  </span>
+                  <LucideIcon name={ind.icon} className="w-6 h-6" />
                 </div>
                 <h3 className="text-sm font-bold text-slate-900 mb-1">
                   {ind.title}

@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { X, Tag } from 'lucide-react';
 import { companyInfo } from '../data';
 
 export default function ProjectLightbox({ project, onClose, onOpenQuote }) {
@@ -35,7 +36,7 @@ export default function ProjectLightbox({ project, onClose, onOpenQuote }) {
               className="absolute top-4 left-4 z-20 w-10 h-10 rounded-full bg-inverse-surface/80 hover:bg-inverse-surface text-white flex items-center justify-center transition-all shadow-xl"
               aria-label="إغلاق"
             >
-              <span className="material-symbols-outlined text-[24px]">close</span>
+              <X className="w-5 h-5" />
             </motion.button>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 max-h-[85vh] overflow-y-auto">
@@ -61,8 +62,8 @@ export default function ProjectLightbox({ project, onClose, onOpenQuote }) {
               <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between bg-surface">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-4">
-                    <span className="material-symbols-outlined text-[16px]">folder_special</span>
-                    {project.categoryName || project.category}
+                    <Tag className="w-3.5 h-3.5" />
+                    <span>{project.categoryName || project.category}</span>
                   </div>
 
                   <h3 className="text-xl sm:text-2xl font-black text-on-surface mb-3 leading-tight">

@@ -1,17 +1,28 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronLeft } from 'lucide-react';
 import { brandLogo, navLinks, companyInfo } from '../data';
 import { useApp } from '../context/AppContext';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const { openQuoteModal } = useApp();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const whatsappUrl = `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent('السلام عليكم، أود التواصل والاستفسار عن خدمات رواد الإبداع.')}`;
 
@@ -20,7 +31,11 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute top-0 left-0 right-0 w-full z-40 bg-inverse-surface/10 backdrop-blur-xl border-b border-white/10 text-white shadow-lg"
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-[#071325]/90 backdrop-blur-xl border-b border-white/10 shadow-2xl py-0'
+          : 'bg-transparent border-b border-transparent py-2'
+      } text-white`}
     >
       <div className="h-20 max-w-container-max mx-auto px-4 sm:px-6 lg:px-16 flex items-center justify-between gap-6">
         {/* Brand Logo */}
@@ -41,7 +56,9 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation with Animated Active Indicator */}
-        <nav className="hidden lg:flex items-center gap-2 p-1.5 rounded-full bg-white/5 border border-white/10">
+        <nav className={`hidden lg:flex items-center gap-2 p-1.5 rounded-full transition-all duration-300 ${
+          scrolled ? 'bg-white/5 border border-white/10' : 'bg-black/30 backdrop-blur-md border border-white/15'
+        }`}>
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
             return (
@@ -85,12 +102,14 @@ export default function Navbar() {
           <motion.button
             whileTap={{ scale: 0.92 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden w-10 h-10 hover:bg-white/20 text-white flex items-center justify-center transition-colors rounded-xl"
+            className="lg:hidden w-10 h-10 hover:bg-white/20 text-white flex items-center justify-center transition-colors rounded-xl bg-white/5 border border-white/10"
             aria-label="القائمة"
           >
-            <span className="material-symbols-outlined text-[24px]">
-              {mobileMenuOpen ? 'close' : 'menu'}
-            </span>
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6 text-white" />
+            ) : (
+              <Menu className="w-6 h-6 text-white" />
+            )}
           </motion.button>
         </div>
       </div>
@@ -103,7 +122,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="lg:hidden bg-inverse-surface/98 border-b border-white/10 px-6 py-6 space-y-4 text-right overflow-hidden shadow-2xl"
+            className="lg:hidden bg-[#071325]/98 backdrop-blur-2xl border-b border-white/10 px-6 py-6 space-y-4 text-right overflow-hidden shadow-2xl"
           >
             <div className="flex flex-col space-y-2">
               {navLinks.map((link, idx) => {
@@ -125,9 +144,7 @@ export default function Navbar() {
                       }`}
                     >
                       <span>{link.label}</span>
-                      <span className="material-symbols-outlined text-[18px] opacity-70">
-                        chevron_left
-                      </span>
+                      <ChevronLeft className="w-5 h-5 opacity-70" />
                     </motion.div>
                   </Link>
                 );

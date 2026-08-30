@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle2, X } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { companyInfo } from '../data';
 import ProjectLightbox from './ProjectLightbox';
@@ -33,16 +34,14 @@ export default function ClientShell({ children }) {
             className="fixed top-24 left-1/2 z-50 pointer-events-auto"
           >
             <div className="bg-inverse-surface text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-white/15 text-xs sm:text-sm font-bold backdrop-blur-xl">
-              <span className="material-symbols-outlined text-[22px] text-primary-fixed">
-                check_circle
-              </span>
+              <CheckCircle2 className="w-5 h-5 text-primary-fixed shrink-0" />
               <span>{toastMessage}</span>
               <button
                 onClick={() => setToastMessage('')}
                 className="mr-2 text-white/60 hover:text-white transition-colors"
                 aria-label="إغلاق التنبيه"
               >
-                <span className="material-symbols-outlined text-[18px]">close</span>
+                <X className="w-4 h-4" />
               </button>
             </div>
           </motion.div>

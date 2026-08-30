@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { X, Send, Loader2 } from 'lucide-react';
 
 export default function QuoteModal({ isOpen, onClose, initialService = '', onShowToast }) {
   const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', onSho
     phone: '',
     company: '',
     service: initialService || 'اللوحات الإعلانية الخارجية',
-    city: 'الرياض',
+    city: 'جدة',
     notes: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -73,7 +74,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', onSho
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors relative z-10"
                 aria-label="إغلاق"
               >
-                <span className="material-symbols-outlined text-[20px]">close</span>
+                <X className="w-5 h-5" />
               </motion.button>
             </div>
 
@@ -122,7 +123,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', onSho
                     type="text"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    placeholder="مثال: مطعم شذا الرياض"
+                    placeholder="مثال: مطعم أو متجر..."
                     className="w-full px-4 py-3 rounded-xl border border-outline-variant bg-surface focus:outline-none focus:border-primary text-sm transition-colors"
                   />
                 </div>
@@ -137,9 +138,9 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', onSho
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-outline-variant bg-surface focus:outline-none focus:border-primary text-sm transition-colors"
                   >
-                    <option value="الرياض">الرياض</option>
                     <option value="جدة">جدة</option>
                     <option value="مكة المكرمة">مكة المكرمة</option>
+                    <option value="الرياض">الرياض</option>
                     <option value="الدمام والخبر">الدمام والخبر</option>
                     <option value="المدينة المنورة">المدينة المنورة</option>
                     <option value="القصيم">القصيم</option>
@@ -162,6 +163,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', onSho
                   <option value="اللوحات الإعلانية الخارجية">اللوحات الإعلانية الخارجية</option>
                   <option value="الحروف البارزة والمضيئة 3D">الحروف البارزة والمضيئة 3D</option>
                   <option value="تكسية الواجهات (الكلادينج)">تكسية الواجهات (الكلادينج)</option>
+                  <option value="منصات وستاندات العرض POS">منصات وستاندات العرض POS</option>
                   <option value="الطباعة الرقمية العريضة">الطباعة الرقمية العريضة</option>
                   <option value="تغليف أساطيل السيارات">تغليف أساطيل السيارات</option>
                   <option value="تصنيع أجنحة المعارض والبوثات">تصنيع أجنحة المعارض والبوثات</option>
@@ -179,7 +181,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', onSho
                   rows={3}
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  placeholder="مثال: لوحة واجهة بطول 12 متر وارتفاع مترين، مع حروف بارزة زنكور مضيئة..."
+                  placeholder="مثال: لوحة واجهة بطول 12 متر وارتفاع مترين، مع حروف بارزة مضيئة..."
                   className="w-full px-4 py-3 rounded-xl border border-outline-variant bg-surface focus:outline-none focus:border-primary text-sm transition-colors resize-none"
                 ></textarea>
               </div>
@@ -195,15 +197,13 @@ export default function QuoteModal({ isOpen, onClose, initialService = '', onSho
                 >
                   {isSubmitting ? (
                     <>
-                      <span className="material-symbols-outlined animate-spin text-[20px]">
-                        progress_activity
-                      </span>
+                      <Loader2 className="w-5 h-5 animate-spin" />
                       <span>جاري إرسال الطلب...</span>
                     </>
                   ) : (
                     <>
                       <span>إرسال طلب عرض السعر</span>
-                      <span className="material-symbols-outlined text-[20px]">send</span>
+                      <Send className="w-4.5 h-4.5" />
                     </>
                   )}
                 </motion.button>

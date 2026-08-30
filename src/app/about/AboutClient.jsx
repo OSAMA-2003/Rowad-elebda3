@@ -7,6 +7,8 @@ import { statsData, workshopCapabilities, companyInfo } from '../../data';
 import StatsCounter from '../../components/StatsCounter';
 import SplitText from '../../components/SplitText';
 import LocationMap from '../../components/LocationMap';
+import LucideIcon from '../../components/LucideIcon';
+import { Flag, Eye } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
 const fadeInUp = {
@@ -146,7 +148,7 @@ export default function AboutClient() {
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full pointer-events-none group-hover:scale-150 transition-transform duration-500"></div>
             <div className="mb-6 w-14 h-14 flex items-center justify-center bg-primary/10 text-primary rounded-2xl shadow-sm">
-              <span className="material-symbols-outlined text-[32px]">flag</span>
+              <Flag className="w-8 h-8" />
             </div>
             <h3 className="text-xl sm:text-2xl font-black text-on-surface mb-4">رسالتنا</h3>
             <p className="text-on-surface-variant text-sm sm:text-base leading-relaxed">
@@ -165,7 +167,7 @@ export default function AboutClient() {
           >
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/10 rounded-tr-full pointer-events-none group-hover:scale-150 transition-transform duration-500"></div>
             <div className="mb-6 w-14 h-14 flex items-center justify-center bg-white/10 text-primary-fixed rounded-2xl shadow-sm">
-              <span className="material-symbols-outlined text-[32px]">visibility</span>
+              <Eye className="w-8 h-8" />
             </div>
             <h3 className="text-xl sm:text-2xl font-black text-white mb-4">رؤيتنا</h3>
             <p className="text-surface-container-low text-sm sm:text-base leading-relaxed">
@@ -240,9 +242,7 @@ export default function AboutClient() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute top-4 right-4 w-11 h-11 rounded-2xl bg-surface/90 backdrop-blur-md flex items-center justify-center text-primary shadow-md z-10">
-                    <span className="material-symbols-outlined text-[24px]">
-                      {cap.icon}
-                    </span>
+                    <LucideIcon name={cap.icon} className="w-6 h-6" />
                   </div>
                 </div>
                 <div className="p-7">

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { localImages, companyInfo } from '../../data';
 import SplitText from '../../components/SplitText';
+import { Eye } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
 export default function PortfolioClient() {
@@ -123,9 +124,7 @@ export default function PortfolioClient() {
                   </span>
                 </div>
                 <div className="w-9 h-9 rounded-full bg-surface-container-high group-hover:bg-primary group-hover:text-white flex items-center justify-center text-on-surface-variant transition-colors shrink-0">
-                  <span className="material-symbols-outlined text-[20px]">
-                    visibility
-                  </span>
+                  <Eye className="w-4.5 h-4.5" />
                 </div>
               </div>
             </div>

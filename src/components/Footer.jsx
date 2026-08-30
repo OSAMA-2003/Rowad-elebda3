@@ -1,24 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ChevronLeft, Clock, MapPin } from 'lucide-react';
 import { brandLogo, companyInfo, navLinks } from '../data';
 import { useApp } from '../context/AppContext';
 
 export default function Footer() {
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const { showToast } = useApp();
-
-  const handleNewsletter = (e) => {
-    e.preventDefault();
-    if (!newsletterEmail) return;
-    if (showToast) {
-      showToast('شكراً لاشتراكك في القائمة البريدية لرواد الإبداع!');
-    }
-    setNewsletterEmail('');
-  };
-
   return (
     <footer className="w-full bg-inverse-surface text-on-secondary-fixed pt-20 pb-12 border-t border-white/5 text-right">
       <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -51,9 +40,7 @@ export default function Footer() {
                   href={link.path}
                   className="hover:text-primary-fixed transition-colors flex items-center gap-2"
                 >
-                  <span className="material-symbols-outlined text-[14px] text-primary">
-                    chevron_left
-                  </span>
+                  <ChevronLeft className="w-3.5 h-3.5 text-primary shrink-0" />
                   <span>{link.label}</span>
                 </Link>
               </li>
@@ -69,21 +56,15 @@ export default function Footer() {
           </div>
           <div className="space-y-3 text-sm text-on-secondary-fixed-variant">
             <p className="flex items-start gap-2.5">
-              <span className="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">
-                schedule
-              </span>
+              <Clock className="w-4.5 h-4.5 text-primary shrink-0 mt-0.5" />
               <span>{companyInfo.workingHours.weekdays}</span>
             </p>
             <p className="flex items-start gap-2.5">
-              <span className="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">
-                location_on
-              </span>
+              <MapPin className="w-4.5 h-4.5 text-primary shrink-0 mt-0.5" />
               <span>{companyInfo.address}</span>
             </p>
           </div>
         </div>
-
-
       </div>
 
       <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16 pt-10 mt-10 border-t border-white/5 text-center text-xs text-gray-400 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -101,8 +82,6 @@ export default function Footer() {
           </span>
           <span>— للخدمات البرمجية</span>
         </a>
-
-
       </div>
     </footer>
   );
