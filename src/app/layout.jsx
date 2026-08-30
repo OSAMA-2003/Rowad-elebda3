@@ -99,6 +99,9 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'kb_YUFGuH7rCuqkoDM_WHAFKLWLmIQGkRR8zBi9v-uw',
+  },
   category: 'Advertising, Marketing & Signage Production',
   icons: {
     icon: '/logo2.png',
@@ -118,6 +121,7 @@ export default function RootLayout({ children }) {
     <html lang="ar" dir="rtl">
       <head>
         <JsonLd />
+        <meta name="google-site-verification" content="kb_YUFGuH7rCuqkoDM_WHAFKLWLmIQGkRR8zBi9v-uw" />
         <meta name="geo.region" content="SA-02" />
         <meta name="geo.placename" content="Jeddah" />
         <meta name="geo.position" content="21.52493;39.17931" />
