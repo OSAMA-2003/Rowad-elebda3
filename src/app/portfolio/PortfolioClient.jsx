@@ -15,9 +15,11 @@ export default function PortfolioClient() {
     { key: 'all', label: 'الكل' },
     { key: 'signs', label: 'لوحات إعلانية' },
     { key: '3d-letters', label: 'حروف بارزة ومضيئة' },
-    { key: 'printing', label: 'مطبوعات' },
-    { key: 'booths', label: 'أجنحة معارض' },
-    { key: 'vehicles', label: 'تغليف سيارات' }
+    { key: 'displays', label: 'منصات وستاندات عرض' },
+    { key: 'booths', label: 'أجنحة ومعارض' },
+    { key: 'acrylic', label: 'منتجات أكريليك' },
+    { key: 'awards', label: 'دروع وتكريم' },
+    { key: 'digital-screens', label: 'شاشات تفاعلية' }
   ];
 
   const filteredProjects =

@@ -30,10 +30,11 @@ export default function HomeClient() {
   const portfolioCategories = [
     { key: 'all', label: 'الكل' },
     { key: 'signs', label: 'لوحات إعلانية' },
-    { key: '3d-letters', label: 'حروف مضيئة' },
-    { key: 'printing', label: 'مطبوعات' },
+    { key: '3d-letters', label: 'حروف بارزة' },
+    { key: 'displays', label: 'منصات وستاندات' },
     { key: 'booths', label: 'أجنحة معارض' },
-    { key: 'vehicles', label: 'تغليف سيارات' }
+    { key: 'awards', label: 'دروع وهدايا' },
+    { key: 'acrylic', label: 'أكريليك' }
   ];
 
   const filteredPortfolio =

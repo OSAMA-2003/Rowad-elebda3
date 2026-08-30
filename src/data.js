@@ -11,7 +11,7 @@ export const brandLogo = '/logo2.png';
 export const heroDesktop = '/hero1.png';
 export const heroMobile = '/hero2.png';
 
-// Local Image Registry (All 18 local photos)
+// Local Image Registry (All 43 local projects & products)
 export const localImages = [
   {
     id: 1,
@@ -209,6 +209,281 @@ export const localImages = [
     description: 'تصميم جناح عرض تفاعلي يشمل مجسماً ضخماً للمنتج داخل إطار مضيء مع شاشات جدارية وكاونتر استقبال عصري.',
     client: 'شركة Novo Nordisk (Wegovy)',
     aspect: 'landscape',
+    featured: true
+  },
+  {
+    id: 19,
+    file: '/images/19.jpg',
+    title: 'ستاند عرض منتجات جونسون المضيء',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصميم وتنفيذ ستاند عرض تفاعلي مخصص على شكل قطرة لمنتجات جونسون للأطفال مع أرفف أكريليك وإضاءة LED داخلية مبهرة.',
+    client: 'جونسون (Johnson’s)',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 20,
+    file: '/images/20.jpg',
+    title: 'منصات عرض كاونترات ترويجية مضيئة',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصنيع كاونترات عرض ترويجية مضيئة بألوان تفاعلية وإضاءة LED كاملة لصيدليات النهدي (Nahdi Specials).',
+    client: 'صيدليات النهدي (Nahdi)',
+    aspect: 'landscape',
+    featured: true
+  },
+  {
+    id: 21,
+    file: '/images/21.jpg',
+    title: 'لوحة بارزة دائرية مضيئة وجهين (Blade Sign)',
+    category: 'signs',
+    categoryName: 'لوحات إعلانية',
+    description: 'تصنيع لوحات بروز دائرية مضيئة وجهين للمحلات والمقاهي بهيكل ألومنيوم معالج وأكريليك ناصع البياض ومحول معزول.',
+    client: 'مقاهي ومحلات تجارية',
+    aspect: 'portrait',
+    featured: false
+  },
+  {
+    id: 22,
+    file: '/images/22.jpg',
+    title: 'وحدة أرفف وجندولا عرض مستحضرات التجميل',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصنيع جندولا عرض خشبية وأكريليك متعددة الطوابق بتقسيمات مخصصة وأدراج تخزين سفلية لعلامة EVILYNN.',
+    client: 'علامة EVILYNN لمستحضرات التجميل',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 23,
+    file: '/images/23.jpg',
+    title: 'درع تكريم اليوبيل الذهبي (50 عاماً)',
+    category: 'awards',
+    categoryName: 'دروع وهدايا',
+    description: 'تصميم وقص ليزر لدرع تكريم أكريليك شفاف فاخر برقم 50 مفرغ مع قاعدة بيضاء وطباعة UV عالية الدقة.',
+    client: 'شركة السحيلي (Alsuhaili - telergon)',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 24,
+    file: '/images/24.jpg',
+    title: 'مجسم شعار النادي الأهلي السعودي طبقات أكريليك',
+    category: 'acrylic',
+    categoryName: 'منتجات أكريليك',
+    description: 'تنفيذ درع وشعار النادي الأهلي السعودي بأكريليك مقصوص بالليزر بنظام الطبقات ثلاثية الأبعاد والألوان الأصلية.',
+    client: 'النادي الأهلي السعودي (Al-Ahli FC)',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 25,
+    file: '/images/25.jpg',
+    title: 'لوحة درع مضيئة (وعبر الزمان سنمضي معاً)',
+    category: '3d-letters',
+    categoryName: 'حروف بارزة ومضيئة',
+    description: 'لوحة جدارية درع النادي الأهلي مع إضاءة نيون LED محيطية وأكريليك معتم وشفاف عالي الفخامة.',
+    client: 'النادي الأهلي السعودي',
+    aspect: 'square',
+    featured: true
+  },
+  {
+    id: 26,
+    file: '/images/26.jpg',
+    title: 'لوحة مكتبية أكريليك أسود مطفي وشعار محفور',
+    category: 'signs',
+    categoryName: 'لوحات إعلانية',
+    description: 'تصنيع لوحات مكاتب فخمة من الأكريليك الأسود المطفي (Matte Black) مع حفر ليزر غائر وبروز بلون أحمر شفاف.',
+    client: 'شركة DAM COMx',
+    aspect: 'portrait',
+    featured: false
+  },
+  {
+    id: 27,
+    file: '/images/27.jpg',
+    title: 'كشك ومنصة شاشة تفاعلية ذكية (Toyota Kiosk)',
+    category: 'digital-screens',
+    categoryName: 'شاشات ومنصات ذكية',
+    description: 'تصميم وتصنيع كشك شاشة تفاعلية ذكي من الأكريليك الأبيض اللامع بإطار انسيابي أحمر وشعار تويوتا.',
+    client: 'شركة عبد اللطيف جميل - تويوتا (Toyota)',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 28,
+    file: '/images/28.jpg',
+    title: 'كاونتر استقبال فاخر ومضلع لمعارض لكزس',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصنيع وتركيب كاونتر استقبال رخامي أسود بتكسيات بيضاء مضلعة وشعارات بارزة لكزس ومؤسسة بينالي الدرعية.',
+    client: 'لكزس (Lexus) & بينالي الدرعية',
+    aspect: 'landscape',
+    featured: true
+  },
+  {
+    id: 29,
+    file: '/images/29.jpg',
+    title: 'لوحة وهيكل معلق كافيه (Tomorrow Cafe)',
+    category: '3d-letters',
+    categoryName: 'حروف بارزة ومضيئة',
+    description: 'تصنيع لوحة علوية معلقة وهيكل معدني واستيل بحروف بارزة مضيئة وإضاءة محيطية لمقهى Tomorrow Cafe.',
+    client: 'مقهى تومورو (Tomorrow Cafe)',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 30,
+    file: '/images/30.jpg',
+    title: 'كاونتر استقبال رئيسي ضخم لمعارض تويوتا',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تنفيذ كاونتر استقبال واستعلامات رئيسي لمعارض تويوتا بشعار ثلاثي الأبعاد مضيء وهوية #غدك_اليوم وشاشة تفاعلية.',
+    client: 'شركة عبد اللطيف جميل - تويوتا (Toyota)',
+    aspect: 'landscape',
+    featured: true
+  },
+  {
+    id: 31,
+    file: '/images/31.jpg',
+    title: 'جناح ومجسمات عطور شانيل (CHANEL N°5)',
+    category: 'booths',
+    categoryName: 'أجنحة ومعارض',
+    description: 'تنفيذ منصة عرض ترويجية عملاقة لمول عطور شانيل N°5 تشمل مجسم زجاجة عطر ضخم، علب هدايا، وشعار شانيل مضيء كريستالي.',
+    client: 'شانيل (CHANEL)',
+    aspect: 'landscape',
+    featured: true
+  },
+  {
+    id: 32,
+    file: '/images/32.jpg',
+    title: 'لوحة جدارية إرشادية أكريليك بمسامير استيل',
+    category: 'signs',
+    categoryName: 'لوحات إعلانية',
+    description: 'تصنيع لوحات جدارية واستقبال أكريليك شفاف بمقاسات مخصصة ومسامير تباعد استيل فضية وطباعة رقمية واضحة.',
+    client: 'مركز GLO Thai Massage',
+    aspect: 'landscape',
+    featured: false
+  },
+  {
+    id: 33,
+    file: '/images/33.jpg',
+    title: 'ستاند كاونتر صيدليات لقطرات العيون Systane',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصنيع ستاندات كاونتر ونقاط بيع أكريليك وبلاستيك مقوى مع تفريغ ليزر وطباعة ملونة لمنتجات العيون Systane من ألكون.',
+    client: 'شركة ألكون (Alcon - Novartis)',
+    aspect: 'square',
+    featured: false
+  },
+  {
+    id: 34,
+    file: '/images/34.jpg',
+    title: 'درع شكر وتقدير مرايا فضي مع علبة مخملية',
+    category: 'awards',
+    categoryName: 'دروع وهدايا',
+    description: 'تفصيل دروع تكريم فاخرة من الأكريليك المرايا الفضي بتصميم خط عربي وشعار رؤية 2030 داخل علبة قطيفة مخملية رمادية.',
+    client: 'مكتب التعليم الأهلي بجدة - وزارة التعليم',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 35,
+    file: '/images/35.jpg',
+    title: 'برج إعلاني وتوتم مضيء (Pylon Totem Sign)',
+    category: 'signs',
+    categoryName: 'لوحات إعلانية',
+    description: 'تصنيع وتركيب توتم إعلاني مضيء عملاق بارتفاع شاهق داخل المراكز التجارية لجمعية خيركم لتحفيظ القرآن الكريم.',
+    client: 'جمعية خيركم لتحفيظ القرآن الكريم',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 36,
+    file: '/images/36.jpg',
+    title: 'ستاند عرض مستحضرات تجميل ومكياج LOVERA',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصنيع ستاند عرض أسود فاخر لمستحضرات التجميل مع خانات أكريليك منظمة لأقلام ومحددات التجميل وإضاءة مخفية.',
+    client: 'علامة لوفيرا (LOVERA)',
+    aspect: 'portrait',
+    featured: false
+  },
+  {
+    id: 37,
+    file: '/images/37.jpg',
+    title: 'لوحة استقبال حروف بارزة وإضاءة خفية The One Clinics',
+    category: '3d-letters',
+    categoryName: 'حروف بارزة ومضيئة',
+    description: 'تصنيع وتركيب لوحة استقبال جدارية راقية بحروف بارزة سوداء مدمجة في الرخام مع إضاءة خفية دافئة Warm White.',
+    client: 'عيادات The One Clinics',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 38,
+    file: '/images/38.jpg',
+    title: 'ستاندات عرض أرضية FSDU لمنتجات نوتيلا (Nutella)',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصميم وهندسة ستاندات عرض أرضية FSDU متينة لمنتجات نوتيلا في السوبرماركت ومراكز التسوق الكبرى بهيكل أحمر وأبيض.',
+    client: 'فيريرو - نوتيلا (Ferrero Nutella)',
+    aspect: 'portrait',
+    featured: false
+  },
+  {
+    id: 39,
+    file: '/images/39.jpg',
+    title: 'ستاند كاونتر دوار متعدد الأوجه لمنتجات العناية',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصنيع ستاند عرض كاونتر دوار 360 درجة متعدد الأوجه لأقسام ثريا وحواء لمنتجات Pure Beauty مع حامل بروشورات أكريليك.',
+    client: 'علامة Pure Beauty - أنتي نجمة',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 40,
+    file: '/images/40.jpg',
+    title: 'إنتاج كميات تجارية من ستاندات جلسرين كريم',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصنيع وإنتاج دفعات تجارية ضخمة من ستاندات العرض الأرضية الخشبية والأكريليك لمنتجات جلسرين كريم الأصلي.',
+    client: 'جلسرين كريم الأصلي (Pure Glycerin Cream)',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 41,
+    file: '/images/41.jpg',
+    title: 'ستاند كاونتر أكريليك لمنتجات Fresh Toung',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصنيع ستاند كاونتر نقاط بيع أكريليك أبيض وأسود لمنتجات العناية بالفم Fresh Toung مع طباعة ديجيتال زاهية.',
+    client: 'علامة Fresh Toung',
+    aspect: 'portrait',
+    featured: false
+  },
+  {
+    id: 42,
+    file: '/images/42.jpg',
+    title: 'وحدة جندولا جدارية فاخرة بإطار نيون EVILYNN',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصنيع وحدة جندولا وعرض جدارية وردية لمستحضرات التجميل مع إطار نيون LED أبيض متصل وإنارة مدمجة بكل رف.',
+    client: 'علامة EVILYNN لمستحضرات التجميل',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 43,
+    file: '/images/43.jpg',
+    title: 'ستاندات كاونتر ذكية بأكواد QR وقاعدة مرايا ذهبية',
+    category: 'signs',
+    categoryName: 'لوحات إعلانية',
+    description: 'تصنيع ستاندات كاونتر أكريليك بيضاء ثمانية الأضلاع مع قاعدة مرايا ذهبية وأكواد QR تفاعلية لـ Instagram و Google لعلامة CARTTEL.',
+    client: 'علامة CARTTEL',
+    aspect: 'square',
     featured: true
   }
 ];
