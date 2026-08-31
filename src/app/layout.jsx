@@ -6,7 +6,7 @@ import ClientShell from '../components/ClientShell';
 import JsonLd from '../components/JsonLd';
 
 export const metadata = {
-  metadataBase: new URL('https://rowad-elebda3.sa'),
+  metadataBase: new URL('https://www.rowad-elebdaa.com'),
   title: {
     default: 'رواد الإبداع | أفضل شركة دعاية وإعلان وتصنيع لوحات في السعودية',
     template: '%s | رواد الإبداع للإنتاج الإعلاني والدعاية',
@@ -49,7 +49,7 @@ export const metadata = {
     'لوحات اعلانية السعودية',
     'مصنع لوحات اعلانية جدة',
   ],
-  authors: [{ name: 'رواد الإبداع للإنتاج الإعلاني', url: 'https://rowad-elebda3.sa' }],
+  authors: [{ name: 'رواد الإبداع للإنتاج الإعلاني', url: 'https://www.rowad-elebdaa.com' }],
   creator: 'رواد الإبداع للإنتاج الإعلاني',
   publisher: 'رواد الإبداع للإنتاج الإعلاني',
   formatDetection: {
@@ -67,7 +67,7 @@ export const metadata = {
     title: 'رواد الإبداع | أفضل شركة دعاية وإعلان وتصنيع لوحات في السعودية',
     description:
       'حلول متكاملة لتصنيع وتركيب اللوحات الإعلانية، الحروف البارزة والمضيئة، الكلادينج والطباعة الرقمية في المملكة العربية السعودية بمعايير هندسية دقيقة.',
-    url: 'https://rowad-elebda3.sa',
+    url: 'https://www.rowad-elebdaa.com',
     siteName: 'رواد الإبداع للإنتاج الإعلاني',
     images: [
       {
@@ -104,9 +104,16 @@ export const metadata = {
   },
   category: 'Advertising, Marketing & Signage Production',
   icons: {
-    icon: '/logo2.png',
-    shortcut: '/logo2.png',
-    apple: '/logo2.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/logo2.png', type: 'image/png', sizes: '32x32' },
+      { url: '/logo2.png', type: 'image/png', sizes: '192x192' },
+      { url: '/logo2.png', type: 'image/png', sizes: '512x512' },
+    ],
+    shortcut: ['/favicon.ico'],
+    apple: [
+      { url: '/logo2.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
 };
 
@@ -126,6 +133,13 @@ export default function RootLayout({ children }) {
         <meta name="geo.placename" content="Jeddah" />
         <meta name="geo.position" content="21.52493;39.17931" />
         <meta name="ICBM" content="21.52493, 39.17931" />
+        
+        {/* Favicons for Google Search Results & All Browsers */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo2.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/logo2.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo2.png" />
+        
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

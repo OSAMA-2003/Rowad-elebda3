@@ -7,7 +7,7 @@ export default function JsonLd() {
     '@graph': [
       {
         '@type': 'LocalBusiness',
-        '@id': 'https://rowad-elebda3.sa/#business',
+        '@id': 'https://www.rowad-elebdaa.com/#business',
         name: 'رواد الإبداع للإنتاج الإعلاني',
         alternateName: [
           'رواد الابداع',
@@ -15,13 +15,13 @@ export default function JsonLd() {
           'مؤسسة رواد الإبداع',
           'شركة رواد الإبداع',
           'Rowad Al Ebda',
-          'Rowad Elebda3 Advertising'
+          'Rowad Elebdaa Advertising'
         ],
-        url: 'https://rowad-elebda3.sa',
-        logo: 'https://rowad-elebda3.sa/logo2.png',
+        url: 'https://www.rowad-elebdaa.com',
+        logo: 'https://www.rowad-elebdaa.com/logo2.png',
         image: [
-          'https://rowad-elebda3.sa/hero1.png',
-          'https://rowad-elebda3.sa/logo2.png'
+          'https://www.rowad-elebdaa.com/hero1.png',
+          'https://www.rowad-elebdaa.com/logo2.png'
         ],
         description:
           'شركة رواد الإبداع للإنتاج الإعلاني والدعاية - تصنيع وتركيب اللوحات الإعلانية الخارجية والداخلية، حروف بارزة ومضيئة 3D، واجهات كلادينج، طباعة UV رقمية، بوثات معارض وتغليف أساطيل السيارات في المملكة العربية السعودية.',
@@ -81,8 +81,8 @@ export default function JsonLd() {
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://rowad-elebda3.sa/#website',
-        url: 'https://rowad-elebda3.sa',
+        '@id': 'https://www.rowad-elebdaa.com/#website',
+        url: 'https://www.rowad-elebdaa.com',
         name: 'رواد الإبداع للإنتاج الإعلاني',
         alternateName: 'رواد الابداع',
         description: 'حلول الدعاية والإعلان والإنتاج الإعلاني وتصنيع اللوحات في السعودية',

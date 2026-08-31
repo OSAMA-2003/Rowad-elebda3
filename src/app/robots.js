@@ -1,5 +1,5 @@
 export default function robots() {
-  const baseUrl = 'https://rowad-elebda3.sa';
+  const baseUrl = 'https://www.rowad-elebdaa.com';
 
   return {
     rules: [

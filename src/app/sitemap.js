@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = 'https://rowad-elebda3.sa';
+  const baseUrl = 'https://www.rowad-elebdaa.com';
   const currentDate = new Date().toISOString();
 
   return [
