@@ -6,16 +6,16 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'LocalBusiness',
+        '@type': ['AdvertisingAgency', 'LocalBusiness', 'ProfessionalService'],
         '@id': 'https://www.rowad-elebdaa.com/#business',
-        name: 'رواد الإبداع للإنتاج الإعلاني',
+        name: 'رواد الإبداع - شركة دعاية وإعلان وتصنيع لوحات',
         alternateName: [
-          'رواد الابداع',
-          'رواد الإبداع للدعاية والإعلان',
-          'مؤسسة رواد الإبداع',
-          'شركة رواد الإبداع',
-          'Rowad Al Ebda',
-          'Rowad Elebdaa Advertising'
+          'شركة دعاية واعلان رواد الإبداع',
+          'وكالة دعاية واعلان رواد الإبداع',
+          'رواد الابداع للدعاية والاعلان',
+          'مؤسسة رواد الإبداع للإنتاج الإعلاني',
+          'Rowad Al Ebda Advertising Agency',
+          'Rowad Elebdaa Signage & Advertising'
         ],
         url: 'https://www.rowad-elebdaa.com',
         logo: 'https://www.rowad-elebdaa.com/logo2.png',
@@ -24,12 +24,23 @@ export default function JsonLd() {
           'https://www.rowad-elebdaa.com/logo2.png'
         ],
         description:
-          'شركة رواد الإبداع للإنتاج الإعلاني والدعاية - تصنيع وتركيب اللوحات الإعلانية الخارجية والداخلية، حروف بارزة ومضيئة 3D، واجهات كلادينج، طباعة UV رقمية، بوثات معارض وتغليف أساطيل السيارات في المملكة العربية السعودية.',
+          'شركة دعاية وإعلان ووكالة إنتاج إعلاني متكاملة في السعودية - تصنيع وتركيب اللوحات الإعلانية للمحلات والشركات، حروف بارزة ومضيئة 3D، واجهات كلادينج، طباعة UV رقمية، بوثات معارض وتغليف السيارات في جدة والرياض.',
         telephone: companyInfo.phone,
         email: companyInfo.email,
         priceRange: '$$',
         currenciesAccepted: 'SAR',
         paymentAccepted: 'Cash, Credit Card, Bank Transfer',
+        knowsAbout: [
+          'دعاية واعلان',
+          'شركة دعاية واعلان',
+          'وكالة دعاية واعلان',
+          'تصنيع لوحات اعلانية',
+          'لوحات محلات تجارية',
+          'حروف بارزة مضيئة',
+          'تكسية كلادينج',
+          'طباعة رقمية UV',
+          'اشتراطات بلدي للوحات'
+        ],
         address: {
           '@type': 'PostalAddress',
           streetAddress: '4775 العباقرة، 8068، حي الرويس',
@@ -67,12 +78,13 @@ export default function JsonLd() {
         ],
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
-          name: 'خدمات الدعاية والإعلان والإنتاج الإعلاني',
+          name: 'خدمات شركة دعاية وإعلان وتصنيع لوحات محلات',
           itemListElement: servicesData.map((svc, index) => ({
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
               name: svc.title,
+              serviceType: 'Advertising & Signage Service',
               description: svc.longDesc || svc.shortDesc,
             },
             position: index + 1
@@ -83,9 +95,9 @@ export default function JsonLd() {
         '@type': 'WebSite',
         '@id': 'https://www.rowad-elebdaa.com/#website',
         url: 'https://www.rowad-elebdaa.com',
-        name: 'رواد الإبداع للإنتاج الإعلاني',
-        alternateName: 'رواد الابداع',
-        description: 'حلول الدعاية والإعلان والإنتاج الإعلاني وتصنيع اللوحات في السعودية',
+        name: 'شركة دعاية وإعلان - رواد الإبداع',
+        alternateName: 'وكالة دعاية وإعلان رواد الإبداع',
+        description: 'أفضل شركة دعاية وإعلان وتصنيع لوحات محلات وتكسية كلادينج في السعودية',
         inLanguage: 'ar-SA'
       }
     ]

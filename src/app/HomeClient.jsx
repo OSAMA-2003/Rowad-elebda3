@@ -58,7 +58,7 @@ export default function HomeClient() {
           >
             <Image
               src={heroDesktop}
-              alt="رواد الإبداع للإنتاج الإعلاني - واجهة متجر وتصنيع لوحات إعلانية"
+              alt="شركة دعاية وإعلان وتصنيع لوحات محلات وحروف بارزة مضيئة بالسعودية - رواد الإبداع"
               fill
               priority
               className="object-cover object-center"
@@ -74,7 +74,7 @@ export default function HomeClient() {
           >
             <Image
               src={heroMobile}
-              alt="رواد الإبداع للدعاية والإعلان - واجهة المتجر على الجوال"
+              alt="وكالة دعاية وإعلان وتصنيع لوحات اعلانية بالرياض وجدة - رواد الإبداع"
               fill
               priority
               className="object-cover object-center"
@@ -82,6 +82,11 @@ export default function HomeClient() {
             />
           </motion.div>
         </div>
+
+        {/* Primary Semantic H1 Heading for Search Engines & Accessibility */}
+        <h1 className="sr-only">
+          شركة دعاية وإعلان ووكالة إنتاج إعلاني وتصنيع لوحات المحلات بالسعودية | رواد الإبداع
+        </h1>
       </section>
 
       {/* 2. STATS COUNTER BAR */}
@@ -486,6 +491,40 @@ export default function HomeClient() {
                 </p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8.5 SEO INFORMATION & BRAND CONTENT */}
+      <section className="w-full bg-white py-16 border-t border-slate-200">
+        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-16 text-right">
+          <div className="max-w-4xl mx-auto space-y-6 text-slate-700 leading-relaxed text-sm sm:text-base">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 border-r-4 border-primary pr-3">
+              أفضل شركة دعاية وإعلان ووكالة إنتاج إعلاني في جدة والرياض
+            </h2>
+            <p>
+              تعتبر <strong className="text-primary font-bold">شركة رواد الإبداع للدعاية والإعلان</strong> واحدة من أبرز وأفضل شركات الدعاية والإعلان والإنتاج الإعلاني في المملكة العربية السعودية. نقدم حلولاً هندسية متكاملة تشمل تصنيع وتنفيذ اللوحات الإعلانية للمحلات، واجهات الكلادينج الحديثة، الحروف البارزة والمضيئة 3D، والطباعة الرقمية UV بكافة أنواعها وفق أعلى معايير الجودة وااشتراطات منصة بلدي.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+              <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm">
+                <h3 className="font-bold text-slate-900 mb-2 text-base">تصنيع لوحات محلات وتكسية كلادينج</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  تصنيع وتركيب لوحات الحروف البارزة (زنكور، استيل، أكريليك مضيء) وتكسية واجهات المباني والمحلات بأجود أنواع الكلادينج المقاوم للحريق.
+                </p>
+              </div>
+              <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm">
+                <h3 className="font-bold text-slate-900 mb-2 text-base">خدمات وكالة دعاية وإعلان متكاملة</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  تجهيز أجنحة المعارض والمؤتمرات، تغليف أساطيل سيارات الشركات، وتصنيع الهدايا والدروع التذكارية من الأكريليك الفاخر.
+                </p>
+              </div>
+              <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm">
+                <h3 className="font-bold text-slate-900 mb-2 text-base">تغطية شاملة في جدة والرياض والمملكة</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  فريقنا الهندسي والفني يغطي جدة، الرياض، مكة، المدينة المنورة، والمنطقة الشرقية بشبكة تركيبات سريعة وضمان شامل يمتد حتى 5 سنوات.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -35,7 +35,7 @@ export default function ServicesClient() {
           >
             <Image
               src="/service.png"
-              alt="خدمات اللوحات الإعلانية والإنتاج الإعلاني - رواد الإبداع"
+              alt="خدمات شركة دعاية وإعلان وتصنيع لوحات محلات وتكسية كلادينج - رواد الإبداع"
               fill
               priority
               className="object-cover"
@@ -53,11 +53,11 @@ export default function ServicesClient() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-primary-fixed text-xs font-bold mb-6 backdrop-blur-md">
             <Cpu className="w-4 h-4" />
-            <span>حلول وتطبيقات رواد الإبداع المتكاملة</span>
+            <span>خدمات وكالة دعاية وإعلان متكاملة بالسعودية</span>
           </div>
 
           <SplitText
-            text="خدمات الإنتاج الإعلاني والحلول البصرية المتكاملة"
+            text="خدمات شركة دعاية وإعلان وتصنيع لوحات محلات وكلادينج"
             className="text-3xl sm:text-5xl font-black mb-6 leading-tight text-white justify-center md:pb-3"
             tag="h1"
             delay={50}

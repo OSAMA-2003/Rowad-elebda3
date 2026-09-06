@@ -37,12 +37,12 @@ export default function PortfolioClient() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md mb-6 shadow-lg">
             <span className="w-2 h-2 rounded-full bg-primary-fixed"></span>
             <span className="text-xs font-black text-primary-fixed uppercase tracking-wider">
-              معرض أعمال رواد الإبداع
+              معرض أعمال شركة دعاية وإعلان رواد الإبداع
             </span>
           </div>
 
           <SplitText
-            text="سجل حافل بالإبداع والمشاريع المنفذة"
+            text="مشاريع أفضل شركة دعاية وإعلان وتصنيع لوحات بالسعودية"
             className="text-3xl sm:text-5xl font-black mb-6 leading-tight text-white justify-center md:pb-3"
             tag="h1"
             delay={50}

@@ -36,7 +36,7 @@ export default function AboutClient() {
           >
             <Image
               src="/about.png"
-              alt="من نحن - رواد الإبداع للإنتاج الإعلاني"
+              alt="عن شركة دعاية وإعلان رواد الإبداع - وكالة إنتاج إعلاني بالسعودية"
               fill
               priority
               className="object-cover"
@@ -60,12 +60,12 @@ export default function AboutClient() {
           <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md mb-6 shadow-lg">
             <span className="w-2 h-2 rounded-full bg-primary-fixed"></span>
             <span className="text-xs font-black text-primary-fixed uppercase tracking-wider">
-              من نحن | رواد الإبداع
+              عن شركة دعاية وإعلان رواد الإبداع
             </span>
           </motion.div>
 
           <SplitText
-            text="هندسة الإبداع، بصمة لا تُنسى"
+            text="أفضل شركة دعاية وإعلان ووكالة إنتاج إعلاني بالسعودية"
             className="text-3xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white justify-center md:pb-3"
             tag="h1"
             delay={50}
