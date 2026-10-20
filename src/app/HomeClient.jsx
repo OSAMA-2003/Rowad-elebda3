@@ -31,18 +31,21 @@ export default function HomeClient() {
 
   const portfolioCategories = [
     { key: 'all', label: 'الكل' },
+    { key: 'displays', label: 'منصات وستاندات' },
+    { key: 'awards', label: 'دروع وهدايا' },
     { key: 'signs', label: 'لوحات إعلانية' },
     { key: '3d-letters', label: 'حروف بارزة' },
-    { key: 'displays', label: 'منصات وستاندات' },
     { key: 'booths', label: 'أجنحة معارض' },
-    { key: 'awards', label: 'دروع وهدايا' },
+    { key: 'cnc-laser', label: 'قص ونقش ليزر' },
     { key: 'acrylic', label: 'أكريليك' }
   ];
 
+  const allProjects = [...localImages].reverse();
+
   const filteredPortfolio =
     activePortfolioFilter === 'all'
-      ? localImages.slice(0, 6)
-      : localImages.filter((img) => img.category === activePortfolioFilter).slice(0, 6);
+      ? allProjects.slice(0, 6)
+      : allProjects.filter((img) => img.category === activePortfolioFilter).slice(0, 6);
 
   return (
     <div className="flex flex-col w-full min-h-screen overflow-hidden text-right">
@@ -256,17 +259,7 @@ export default function HomeClient() {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
-                  <span className="text-xs font-bold text-primary-fixed bg-primary-container/80 backdrop-blur-md px-3 py-1 rounded-full w-max mb-2">
-                    مشروع مميز
-                  </span>
-                  <h3 className="text-2xl font-black text-white mb-1">
-                    {featuredCaseStudy.title}
-                  </h3>
-                  <p className="text-slate-200 text-sm">
-                    {featuredCaseStudy.subtitle}
-                  </p>
-                </div>
+
               </div>
             </motion.div>
           </div>
@@ -301,11 +294,10 @@ export default function HomeClient() {
               <button
                 key={cat.key}
                 onClick={() => setActivePortfolioFilter(cat.key)}
-                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${
-                  activePortfolioFilter === cat.key
-                    ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                    : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/10'
-                }`}
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${activePortfolioFilter === cat.key
+                  ? 'bg-primary text-white shadow-lg shadow-primary/30'
+                  : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/10'
+                  }`}
               >
                 {cat.label}
               </button>

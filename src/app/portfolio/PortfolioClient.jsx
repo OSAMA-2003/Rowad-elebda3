@@ -14,19 +14,22 @@ export default function PortfolioClient() {
 
   const categories = [
     { key: 'all', label: 'الكل' },
+    { key: 'displays', label: 'منصات وستاندات عرض' },
+    { key: 'awards', label: 'دروع وتكريم' },
     { key: 'signs', label: 'لوحات إعلانية' },
     { key: '3d-letters', label: 'حروف بارزة ومضيئة' },
-    { key: 'displays', label: 'منصات وستاندات عرض' },
     { key: 'booths', label: 'أجنحة ومعارض' },
+    { key: 'cnc-laser', label: 'قص ونقش ليزر' },
     { key: 'acrylic', label: 'منتجات أكريليك' },
-    { key: 'awards', label: 'دروع وتكريم' },
     { key: 'digital-screens', label: 'شاشات تفاعلية' }
   ];
 
+  const allProjects = [...localImages].reverse();
+
   const filteredProjects =
     selectedFilter === 'all'
-      ? localImages
-      : localImages.filter((img) => img.category === selectedFilter);
+      ? allProjects
+      : allProjects.filter((img) => img.category === selectedFilter);
 
   return (
     <div className="flex flex-col w-full text-right overflow-hidden bg-surface">

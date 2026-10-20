@@ -11,7 +11,7 @@ export const brandLogo = '/logo2.png';
 export const heroDesktop = '/hero1.png';
 export const heroMobile = '/hero2.png';
 
-// Local Image Registry (All 43 local projects & products)
+// Local Image Registry (All 50 local projects & products)
 export const localImages = [
   {
     id: 1,
@@ -485,6 +485,83 @@ export const localImages = [
     client: 'علامة CARTTEL',
     aspect: 'square',
     featured: true
+  },
+  {
+    id: 44,
+    file: '/images/44.jpg',
+    title: 'درع تكريم خشبي فاخر بواجهة أكريليك ونجمة مفرغة',
+    category: 'awards',
+    categoryName: 'دروع وهدايا',
+    description: 'تصميم وتنفيذ درع تكريم مودرن من الخشب الطبيعي السويدي مع واجهة أكريليك أبيض ناصع مفرغ بالليزر على شكل نجمة إبداعية وطباعة حرارية لبيانات التكريم.',
+    client: 'تكريم الموظفين والشركات (Corporate Recognition)',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 45,
+    file: '/images/45.jpg',
+    title: 'مجسم أرضي ثلاثي الأبعاد لفعالية Battle of the Inches العالمية',
+    category: 'booths',
+    categoryName: 'أجنحة ومعارض',
+    description: 'تصنيع وتركيب منصة ومجسم ثلاثي الأبعاد 3D للمؤتمرات والاحتفالات مع حروف بارزة وشعار ملون مفرغ CNC بدقة عالية احتفاءً بفوز المملكة بالمركز الأول عالمياً.',
+    client: 'شركة يونيليفر السعودية (Unilever KSA)',
+    aspect: 'landscape',
+    featured: true
+  },
+  {
+    id: 46,
+    file: '/images/46.jpg',
+    title: 'لوحة خشب طبيعي ريفية محفورة بالليزر (آية النور)',
+    category: 'cnc-laser',
+    categoryName: 'قص وتفريغ ليزر',
+    description: 'حفر ونقش قرآني لآية النور الكريمة بالرسم العثماني على شريحة جذع خشب طبيعي أصيل عبر ماكينات الليزر الصناعية فائقة الدقة.',
+    client: 'قصور وديكورات إسلامية راقية',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 47,
+    file: '/images/47.jpg',
+    title: 'لوحة نقش ليزر لسورة الفلق على جذوع الخشب الطبيعي',
+    category: 'cnc-laser',
+    categoryName: 'قص وتفريغ ليزر',
+    description: 'تنفيذ لوحة تراثية فريدة بحفر سورة الفلق كاملة بالتشكيل الدقيق على جذع خشب طبيعي بيضاوي بحواف حية ومصقول بأعلى معايير الإتقان.',
+    client: 'مقتنيات وتحف خشبية خاصة',
+    aspect: 'landscape',
+    featured: true
+  },
+  {
+    id: 48,
+    file: '/images/48.jpg',
+    title: 'صندوق إهداء فاخر VIP مع درع كريستالي للسعودية للطاقة',
+    category: 'awards',
+    categoryName: 'دروع وهدايا',
+    description: 'تصنيع بوكس إهداء ملكي مكسو بالمخمل الأزرق الداكن مع قفل أمان ذهبي، يحتوي على درع أكريليك مموج بشعار الهوية وشاحن أنكر أنيق وقلم فاخر محفور.',
+    client: 'الشركة السعودية للكهرباء / السعودية للطاقة',
+    aspect: 'landscape',
+    featured: true
+  },
+  {
+    id: 49,
+    file: '/images/49.jpg',
+    title: 'ستاند جندولا جداري مضيء لمستحضرات تجميل GOSH',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصميم وتنفيذ وحدة عرض جدارية راقية POSM بإضاءة LED متجانسة وقواطع أكريليك مخصصة لمختلف مستحضرات التجميل والمكياج مع شعار مضيء بارز.',
+    client: 'ماركة كوزمتكس GOSH العالمية',
+    aspect: 'portrait',
+    featured: true
+  },
+  {
+    id: 50,
+    file: '/images/50.jpg',
+    title: 'تجهيز أرفف متاجر عطور وتجميل ولوحات أقسام مضيئة',
+    category: 'displays',
+    categoryName: 'منصات عرض',
+    description: 'تصنيع وتركيب أرفف عرض تجارية متكاملة (Store Gondolas) لمتاجر ومعارض التجزئة مع ترويسة ولوحات إرشادية مضيئة لأقسام العطور ومعطرات الجسم.',
+    client: 'سلسلة معارض لايف أوتلت (Live Outlet)',
+    aspect: 'portrait',
+    featured: true
   }
 ];
 
@@ -492,7 +569,7 @@ export const localImages = [
 export const featuredCaseStudy = {
   title: 'مجوهرات المملكة',
   subtitle: 'تصميم وتصنيع واجهة خارجية وحروف بارزة مضيئة',
-  image: localImages[1].file, // photo_3
+  image: "/about2.jfif",
   description: 'نحول رؤيتك إلى واقع ملموس من خلال دراسة متأنية وتصميم مبتكر وتنفيذ دقيق. شاهد كيف قمنا بتحويل هوية أحد عملائنا إلى واجهة تجارية مبهرة.',
   highlights: [
     {
